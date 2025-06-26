@@ -201,45 +201,48 @@
       }
 
       .header-content {
-        padding: 0 2rem;
+        padding: 1rem 2rem;
         height: var(--header-height);
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         background-color: var(--sidebar-bg);
+        position: relative;
       }
 
       .search-container {
         flex: 1;
-        max-width: 500px;
-        margin: 0 2rem;
+        max-width: 800px;
+        margin: 0 auto;
         position: relative;
       }
 
       .search-input {
         width: 100%;
-        padding: 0.75rem 1rem 0.75rem 2.5rem;
-        border: 1px solid var(--border-color);
-        border-radius: var(--border-radius);
+        padding: 1rem 1.5rem 1rem 3rem;
+        border: 2px solid var(--border-color);
+        border-radius: 25px;
         background-color: var(--bg-color);
         color: var(--text-color);
-        font-size: 0.9rem;
+        font-size: 1rem;
         transition: var(--transition);
         outline: none;
+        box-shadow: var(--shadow);
       }
 
       .search-input:focus {
         border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(74, 144, 164, 0.15);
+        box-shadow: 0 0 0 4px rgba(74, 144, 164, 0.15), var(--shadow-md);
+        transform: translateY(-1px);
       }
 
       .search-icon {
         position: absolute;
-        left: 0.75rem;
+        left: 1.2rem;
         top: 50%;
         transform: translateY(-50%);
         color: var(--text-muted);
-        font-size: 0.9rem;
+        font-size: 1.1rem;
       }
 
       .header-actions {
@@ -464,7 +467,8 @@
         }
 
         .search-container {
-          margin: 0 1rem;
+          margin: 0 3rem 0 1rem;
+          max-width: none;
         }
 
         .content {
@@ -486,6 +490,11 @@
         cursor: pointer;
         color: var(--text-color);
         font-size: 1.2rem;
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
       }
 
       @media (max-width: 768px) {
