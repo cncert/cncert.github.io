@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DarkBlack - Nav</title>
+    <title>SecNAV - 网址导航</title>
     <!-- Font Awesome CDN -->
     <link
       rel="stylesheet"
@@ -13,32 +13,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --primary-color: #299ec1;
-        --primary-light: #a78bfa;
-        --primary-dark: #6d28d9;
-        --secondary-color: #f59e0b;
-        --secondary-light: #fbbf24;
-        --bg-color: #0f172a;
-        --bg-color-light: #1e293b;
-        --card-bg: #1e293b;
-        --card-hover: #334155;
-        --text-color: #f8fafc;
-        --text-muted: #94a3b8;
-        --border-radius: 16px;
-        --card-radius: 20px;
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        --primary-color: #4A90A4;
+        --primary-light: #7BB3C7;
+        --primary-dark: #2E6B7A;
+        --secondary-color: #6B9B7F;
+        --secondary-light: #8FB5A0;
+        --accent-color: #E8C547;
+        --bg-color: #F7F9FB;
+        --sidebar-bg: #FDFDFE;
+        --card-bg: #ffffff;
+        --card-hover: #F7F9FB;
+        --text-color: #2C3E50;
+        --text-muted: #5A6C7D;
+        --border-color: #E1E8ED;
+        --sidebar-width: 240px;
+        --header-height: 70px;
+        --border-radius: 8px;
+        --card-radius: 12px;
+        --transition: all 0.2s ease-in-out;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      [data-theme="dark"] {
+        --primary-color: #5BA3B8;
+        --primary-light: #7BB3C7;
+        --primary-dark: #3A7A8A;
+        --secondary-color: #7AAD8F;
+        --secondary-light: #8FB5A0;
+        --accent-color: #F0D55A;
+        --bg-color: #1A1D23;
+        --sidebar-bg: #242831;
+        --card-bg: #2A2F3A;
+        --card-hover: #323742;
+        --text-color: #E2E8F0;
+        --text-muted: #94A3B8;
+        --border-color: #3A4553;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
 
       * {
@@ -48,380 +67,327 @@
       }
 
       body {
-        font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, sans-serif;
         background-color: var(--bg-color);
         color: var(--text-color);
         line-height: 1.6;
         overflow-x: hidden;
-        letter-spacing: 0.01em;
-        /* Add padding to bottom to prevent content hitting edge when footer removed */
-        padding-bottom: 2rem;
       }
 
-      /* Scrollbar styling */
-      ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #1e293b;
-        border-radius: 5px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(
-          45deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        border-radius: 5px;
-        border: 2px solid #1e293b;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(
-          45deg,
-          var(--primary-light),
-          var(--primary-color)
-        );
-      }
-
-      /* Header - OPTIMIZED */
-      header {
-        position: relative;
-        /* Adjust padding for more compact look */
-        padding: 1.8rem 1rem 1.5rem;
-        text-align: center;
-        background: linear-gradient(135deg,#20c2f461, #372784);
-        overflow: hidden;
-        margin-bottom: 1.2rem;
-      }
-
-      .header-content {
-        position: relative;
-        z-index: 2;
-        max-width: 1200px;
-        margin: 0 auto;
+      /* Layout Container */
+      .layout-container {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        min-height: 100vh;
       }
 
-      .header-bg {
-        position: absolute;
+      /* Sidebar */
+      .sidebar {
+        width: var(--sidebar-width);
+        background-color: var(--sidebar-bg);
+        border-right: 1px solid var(--border-color);
+        position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        background-image: radial-gradient(
-            circle at 20% 30%,
-            rgba(255, 255, 255, 0.2) 0%,
-            transparent 8%
-          ),
-          radial-gradient(
-            circle at 75% 60%,
-            rgba(255, 255, 255, 0.2) 0%,
-            transparent 10%
-          ),
-          radial-gradient(
-            circle at 40% 80%,
-            rgba(255, 255, 255, 0.2) 0%,
-            transparent 15%
-          );
+        height: 100vh;
+        overflow-y: auto;
+        z-index: 1000;
+        box-shadow: var(--shadow);
       }
 
-      .header-bg::before {
+      .sidebar-header {
+        padding: 1.5rem 1rem;
+        border-bottom: 1px solid var(--border-color);
+        text-align: center;
+      }
+
+      .sidebar-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .sidebar-logo i {
+        font-size: 1.8rem;
+      }
+
+      .sidebar-nav {
+        padding: 1rem 0;
+      }
+
+      .nav-item {
+        margin: 0.25rem 0.75rem;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        color: var(--text-color);
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        font-weight: 500;
+        font-size: 0.9rem;
+        position: relative;
+      }
+
+      .nav-link i {
+        margin-right: 0.75rem;
+        font-size: 1rem;
+        width: 20px;
+        text-align: center;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(74, 144, 164, 0.08);
+        color: var(--primary-color);
+      }
+
+      .nav-link.active {
+        background-color: var(--primary-color);
+        color: white;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .nav-link.active::before {
         content: "";
         position: absolute;
-        top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        opacity: 0.3;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: var(--primary-dark);
+        border-radius: 0 4px 4px 0;
       }
 
-      header h1 {
-        font-size: 3.2rem;
-        font-weight: 800;
-        margin: 0;
-        background: linear-gradient(to right, #fff, #c7d2fe);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        letter-spacing: -0.03em;
-        /* Adjusted margin */
-        margin-bottom: 1rem;
-        text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      /* Main Content */
+      .main-content {
+        margin-left: var(--sidebar-width);
+        flex: 1;
+        min-height: 100vh;
       }
 
-      /* Removed header p style as element is gone */
-      /* header p { ... } */
+      /* Header */
+      .header {
+        background-color: var(--sidebar-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0 2rem;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow-sm);
+      }
 
       .search-container {
-        max-width: 600px;
-        width: 100%;
-        margin: 0 auto;
+        flex: 1;
+        max-width: 500px;
+        margin: 0 2rem;
         position: relative;
       }
 
       .search-input {
         width: 100%;
-        padding: 0.9rem 1.5rem;
-        padding-left: 3rem;
-        border-radius: 9999px;
-        border: none;
-        background-color: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        color: white;
-        font-size: 1rem;
+        padding: 0.75rem 1rem 0.75rem 2.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-size: 0.9rem;
         transition: var(--transition);
         outline: none;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       }
 
       .search-input:focus {
-        background-color: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2),
-          0 4px 20px rgba(0, 0, 0, 0.15);
-      }
-
-      .search-input::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(74, 144, 164, 0.15);
       }
 
       .search-icon {
         position: absolute;
-        left: 1.2rem;
+        left: 0.75rem;
         top: 50%;
         transform: translateY(-50%);
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .content {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        background-color: var(--sidebar-bg);
+      }
+
+      /* Floating Action Buttons */
+      .floating-buttons {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1000;
+      }
+
+      .floating-buttons .back-to-top,
+      .floating-buttons .theme-toggle {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+        color: var(--text-muted);
+        box-shadow: var(--shadow-md);
         font-size: 1.1rem;
       }
 
-      /* Navigation */
-      nav.category-nav {
-        background-color: rgba(30, 41, 59, 0.95);
-        backdrop-filter: blur(10px);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        padding: 0.6rem 1rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        overflow-x: auto;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
-      }
-
-      .nav-container::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
-      }
-
-      .nav-list {
-        display: flex;
-        justify-content: center;
-        list-style: none;
-        gap: 1rem;
-        padding: 0.4rem 0;
-        flex-shrink: 0;
-      }
-
-      .nav-item {
-        flex-shrink: 0;
-      }
-
-      .nav-link {
-        display: block;
-        padding: 0.6rem 1.2rem;
-        color: var(--text-color);
-        text-decoration: none;
-        border-radius: 9999px;
-        font-weight: 600;
-        transition: var(--transition);
-        white-space: nowrap;
-        font-size: 0.95rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .nav-link::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          45deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        opacity: 0;
-        transition: var(--transition);
-        z-index: -1;
-        border-radius: 9999px;
-      }
-
-      .nav-link:hover::before {
-        opacity: 0.1;
-      }
-
-      .nav-link:hover {
+      .floating-buttons .back-to-top:hover,
+      .floating-buttons .theme-toggle:hover {
+        background-color: var(--primary-color);
         color: white;
+        border-color: var(--primary-color);
       }
 
-      .nav-link.active {
-        background: linear-gradient(
-          45deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        color: white;
-        box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
-      }
-
-      .nav-link.active::before {
-        opacity: 0;
-      }
-
-      /* Main content */
-      main {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
+      /* Hide back to top button initially */
+      .floating-buttons .back-to-top {
+        display: none;
       }
 
       .category-section {
-        margin-bottom: 3.5rem;
-        position: relative;
+        margin-bottom: 3rem;
       }
 
       .category-header {
         display: flex;
         align-items: center;
         margin-bottom: 1.5rem;
-        position: relative;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--border-color);
       }
 
       .category-title {
-        font-size: 1.8rem;
-        font-weight: 800;
+        font-size: 1.5rem;
+        font-weight: 600;
         color: var(--text-color);
         margin: 0;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        position: relative;
-        z-index: 2;
+        gap: 0.5rem;
       }
 
       .category-title i {
         color: var(--primary-color);
-        font-size: 1.4rem;
-        background: linear-gradient(
-          45deg,
-          var(--primary-color),
-          var(--primary-light)
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      .category-line {
-        flex-grow: 1;
-        height: 2px;
-        background: linear-gradient(
-          to right,
-          #d7a7194a, 
-          transparent
-        );
-        margin-left: 1rem;
-        border-radius: 9999px;
+        font-size: 1.2rem;
       }
 
       .link-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 1.2rem;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
       }
 
       .link-card {
-        position: relative;
         background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
         border-radius: var(--card-radius);
-        overflow: hidden;
+        padding: 1.25rem;
         transition: var(--transition);
-        height: 140px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1.2rem 0.8rem;
-        text-align: center;
-        box-shadow: var(--shadow);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .link-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary-color);
       }
 
       .link-card::before {
         content: "";
         position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(
-          45deg,
-          var(--primary-color),
-          var(--secondary-color)
-        );
-        z-index: -1;
-        transform: scale(0.98);
-        border-radius: var(--card-radius);
-        opacity: 0;
-        transition: var(--transition);
-      }
-
-      .link-card:hover::before {
-        opacity: 0.3;
-        transform: scale(1);
-      }
-
-      .link-card::after {
-        content: "";
-        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--primary-color),
-          var(--secondary-color)
-        );
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         transform: scaleX(0);
         transform-origin: left;
-        transition: transform 0.4s ease;
+        transition: transform 0.3s ease;
       }
 
-      .link-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-md);
-        border-color: rgba(255, 255, 255, 0.1);
-      }
-
-      .link-card:hover::after {
+      .link-card:hover::before {
         transform: scaleX(1);
+      }
+
+      .link-card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.75rem;
+      }
+
+      .link-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: var(--border-radius);
+        background-color: var(--bg-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.75rem;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        flex-shrink: 0;
+      }
+
+      .link-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-color);
+        margin: 0;
+        line-height: 1.3;
+      }
+
+      .link-description {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
 
       .link-card a {
@@ -431,1346 +397,892 @@
         width: 100%;
         height: 100%;
         z-index: 10;
+        text-decoration: none;
       }
 
-      .link-icon {
-        font-size: 2.2rem;
-        margin-bottom: 0.8rem;
-        transition: var(--transition);
-        position: relative;
-        z-index: 2;
-        background: linear-gradient(
-          45deg,
-          var(--primary-light),
-          var(--secondary-light)
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
       }
 
-      .link-card:hover .link-icon {
-        transform: scale(1.1) translateY(-5px);
-        background: linear-gradient(
-          45deg,
-          var(--primary-color),
-          var(--secondary-color)
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
+      ::-webkit-scrollbar-track {
+        background: var(--bg-color);
       }
 
-      .link-title {
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin: 0;
-        color: var(--text-color);
-        transition: var(--transition);
-        position: relative;
-        z-index: 2;
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
+      ::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 3px;
       }
 
-      .link-card:hover .link-title {
-        color: white;
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--text-muted);
       }
 
-      /* Footer styles removed */
-      /* footer { ... } */
-      /* .footer-bg { ... } */
-      /* .footer-content { ... } */
-      /* ... other footer styles */
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .sidebar {
+          transform: translateX(-100%);
+          transition: transform 0.3s ease;
+        }
 
-      /* Back to top button */
-      .back-to-top {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        background: linear-gradient(
-          45deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        .sidebar.open {
+          transform: translateX(0);
+        }
+
+        .main-content {
+          margin-left: 0;
+        }
+
+        .header {
+          padding: 0 1rem;
+        }
+
+        .search-container {
+          margin: 0 1rem;
+        }
+
+        .content {
+          padding: 1rem;
+        }
+
+        .link-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Mobile menu toggle */
+      .mobile-menu-toggle {
+        display: none;
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: none;
         cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: var(--transition);
-        z-index: 99;
-        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
-      }
-
-      .back-to-top.visible {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .back-to-top:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.5);
-      }
-
-      /* Animations */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes float {
-        0% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-        100% {
-          transform: translateY(0px);
-        }
-      }
-
-      .animate-fade-in {
-        animation: fadeIn 0.5s ease forwards;
-        opacity: 0;
-      }
-
-      .animate-float {
-        animation: float 5s ease-in-out infinite;
-      }
-
-      /* Dark mode toggle */
-      .theme-toggle {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        z-index: 1000;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: rgba(30, 41, 59, 0.8);
-        backdrop-filter: blur(10px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        transition: var(--transition);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .theme-toggle:hover {
-        background-color: var(--primary-color);
-        transform: scale(1.1);
-      }
-
-      .theme-toggle i {
         color: var(--text-color);
         font-size: 1.2rem;
       }
 
-      /* Category badges */
-      .category-badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: linear-gradient(
-          45deg, #3551bf, #17e3bd8a
-        );
-        color: white;
-        font-size: 0.7rem;
-        font-weight: 700;
-        padding: 0.2rem 0.6rem;
-        border-radius: 9999px;
-        opacity: 0;
-        transform: translateY(-5px);
-        transition: var(--transition);
-        z-index: 5;
-      }
-
-      .link-card:hover .category-badge {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Responsive styles */
-      @media (max-width: 1200px) {
-        .link-grid {
-          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-          gap: 1rem;
-        }
-
-        header h1 {
-          font-size: 2.8rem;
-        }
-      }
-
       @media (max-width: 768px) {
-        header {
-          padding: 1.5rem 1rem 1.2rem; /* Further adjust header padding */
+        .mobile-menu-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-
-        header h1 {
-          font-size: 2.4rem;
-        }
-
-        .link-grid {
-          grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-          gap: 0.8rem;
-        }
-
-        .link-card {
-          height: 130px;
-          padding: 1.1rem 0.7rem;
-        }
-
-        .link-icon {
-          font-size: 2rem;
-          margin-bottom: 0.6rem;
-        }
-
-        .link-title {
-          font-size: 0.85rem;
-        }
-
-        .category-title {
-          font-size: 1.6rem;
-        }
-
-        .search-input {
-          padding: 0.8rem 1.5rem;
-          padding-left: 2.8rem;
-          font-size: 0.95rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        header h1 {
-          font-size: 2rem;
-        }
-
-        /* Removed header p media query */
-        /* header p { ... } */
-
-        .link-grid {
-          grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-          gap: 0.7rem;
-        }
-
-        .link-card {
-          height: 120px;
-          padding: 0.9rem 0.5rem;
-        }
-
-        .link-icon {
-          font-size: 1.8rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .link-title {
-          font-size: 0.8rem;
-        }
-
-        .category-title {
-          font-size: 1.4rem;
-        }
-
-        .back-to-top {
-          width: 40px;
-          height: 40px;
-          bottom: 1.5rem;
-          right: 1.5rem;
-        }
-
-        .nav-link {
-          padding: 0.5rem 0.9rem;
-          font-size: 0.8rem;
-        }
-      }
-
-      /* Light mode styles */
-      body.light-mode {
-        --bg-color: #f8fafc;
-        --bg-color-light: #f1f5f9;
-        --card-bg: #ffffff;
-        --card-hover: #f8fafc;
-        --text-color: #0f172a;
-        --text-muted: #64748b;
-      }
-
-      body.light-mode header {
-        background: linear-gradient(135deg, #241762, #20c2f461);
-      }
-
-      body.light-mode .search-input {
-        background-color: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        color: #0f172a;
-      }
-      body.light-mode .search-input::placeholder {
-        color: rgba(0, 0, 0, 0.5);
-      }
-
-      body.light-mode .search-input:focus {
-        background-color: rgba(255, 255, 255, 0.35);
-      }
-
-      body.light-mode nav.category-nav {
-        background-color: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
-          0 2px 4px -1px rgba(0, 0, 0, 0.03);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      }
-      body.light-mode .nav-link {
-        color: var(--text-color);
-      }
-      body.light-mode .nav-link:hover {
-        color: var(--primary-dark);
-      }
-      body.light-mode .nav-link.active {
-        color: white;
-      }
-
-      body.light-mode .link-card {
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-          0 1px 2px 0 rgba(0, 0, 0, 0.06);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-      }
-      body.light-mode .link-card:hover .link-title {
-        color: var(--text-color);
-      }
-
-      body.light-mode .link-card:hover {
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      }
-
-      /* Removed light mode footer styles */
-      /* body.light-mode footer { ... } */
-      /* body.light-mode .social-link { ... } */
-
-      body.light-mode .theme-toggle {
-        background-color: rgba(248, 250, 252, 0.8);
-        border: 1px solid rgba(0, 0, 0, 0.1);
-      }
-      body.light-mode .theme-toggle i {
-        color: var(--text-color);
-      }
-      body.light-mode .theme-toggle:hover {
-        background-color: var(--primary-color);
-      }
-      body.light-mode .theme-toggle:hover i {
-        color: white;
-      }
-
-      /* Preloader */
-      .preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--bg-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
-      }
-
-      .preloader.hidden {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .loader {
-        width: 50px;
-        height: 50px;
-        position: relative;
-      }
-
-      .loader:before,
-      .loader:after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        animation: pulse 2s ease-in-out infinite;
-      }
-
-      .loader:before {
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          45deg,
-          var(--primary-color),
-          var(--primary-dark)
-        );
-        animation-delay: 0.25s;
-      }
-
-      .loader:after {
-        width: 75%;
-        height: 75%;
-        background: linear-gradient(
-          45deg,
-          var(--secondary-color),
-          var(--primary-light)
-        );
-        top: 12.5%;
-        left: 12.5%;
-        animation-delay: 0s;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(0);
-          opacity: 1;
-        }
-        50% {
-          transform: scale(1);
-          opacity: 0;
-        }
-      }
-
-      body.light-mode .preloader {
-        background-color: var(--bg-color);
       }
     </style>
   </head>
   <body>
-    <!-- Preloader -->
-    <div class="preloader">
-      <div class="loader"></div>
+    <div class="layout-container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <a href="#" class="sidebar-logo">
+            <i class="fas fa-layer-group"></i>
+            SecNAV
+          </a>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-item">
+            <a href="#threat-intel" class="nav-link" data-category="threat-intel">
+              <i class="fas fa-shield-alt"></i>
+              威胁情报
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#asset-mapping" class="nav-link" data-category="asset-mapping">
+              <i class="fas fa-map"></i>
+              资测测绘
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#info-gathering" class="nav-link" data-category="info-gathering">
+              <i class="fas fa-search"></i>
+              信息收集
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#vuln-platforms" class="nav-link" data-category="vuln-platforms">
+              <i class="fas fa-bug"></i>
+              漏洞平台
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#hacker-community" class="nav-link" data-category="hacker-community">
+              <i class="fas fa-users"></i>
+              黑客社区
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#ransomware-emergency" class="nav-link" data-category="ransomware-emergency">
+              <i class="fas fa-ambulance"></i>
+              勒索应急
+            </a>
+          </div>
+          <div class="nav-item">
+            <a href="#ai-models" class="nav-link" data-category="ai-models">
+              <i class="fas fa-robot"></i>
+              AI大模型
+            </a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          
+          <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="请输入关键字，按回车 / Enter 搜索">
+          </div>
+          
+          <div class="header-actions">
+
+          </div>
+        </header>
+
+        <!-- Content -->
+        <main class="content">
+          <!-- 威胁情报 -->
+          <section class="category-section" id="threat-intel">
+            <div class="category-header">
+              <h2 class="category-title">
+                <i class="fas fa-shield-alt"></i>
+                威胁情报
+              </h2>
+            </div>
+            <div class="link-grid">
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-search"></i>
+                  </div>
+                  <h3 class="link-title">微步在线情报社区</h3>
+                </div>
+                <p class="link-description">威胁情报查询和分析平台，提供恶意文件、IP、域名等威胁情报信息</p>
+                <a href="https://x.threatbook.cn/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <h3 class="link-title">奇安信威胁情报中心</h3>
+                </div>
+                <p class="link-description">奇安信威胁情报中心，提供最新的网络安全威胁情报和分析报告</p>
+                <a href="https://ti.qianxin.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="link-title">360政企安全集团</h3>
+                </div>
+                <p class="link-description">360政企安全集团威胁情报平台，提供全面的网络安全威胁情报服务</p>
+                <a href="https://ti.360.net/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h3 class="link-title">NTI威胁情报中心</h3>
+                </div>
+                <p class="link-description">绿盟科技威胁情报中心，提供专业的网络威胁情报分析和预警服务</p>
+                <a href="https://nti.nsfocus.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-eye"></i>
+                  </div>
+                  <h3 class="link-title">VirusTotal</h3>
+                </div>
+                <p class="link-description">在线恶意软件扫描服务，支持文件、URL、IP地址和域名检测</p>
+                <a href="https://www.virustotal.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-database"></i>
+                  </div>
+                  <h3 class="link-title">IBM X-Force Exchange</h3>
+                </div>
+                <p class="link-description">IBM威胁情报共享平台，提供全球威胁情报数据和分析</p>
+                <a href="https://exchange.xforce.ibmcloud.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-cloud"></i>
+                  </div>
+                  <h3 class="link-title">安恒信息</h3>
+                </div>
+                <p class="link-description">安恒信息，专注于网络信息安全领域，提供全面的安全产品、服务和解决方案</p>
+                <a href="https://www.dbappsecurity.com.cn/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-fire"></i>
+                  </div>
+                  <h3 class="link-title">深信服</h3>
+                </div>
+                <p class="link-description">深信服科技，提供企业级网络安全、云计算、IT基础设施及物联网等产品和服务</p>
+                <a href="https://www.sangfor.com.cn/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-lock"></i>
+                  </div>
+                  <h3 class="link-title">天融信</h3>
+                </div>
+                <p class="link-description">天融信，中国领先的网络安全、大数据与安全云服务提供商</p>
+                <a href="https://www.topsec.com.cn/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-user-secret"></i>
+                  </div>
+                  <h3 class="link-title">启明星辰</h3>
+                </div>
+                <p class="link-description">启明星辰，国内最具实力的、拥有完全自主知识产权的网络安全产品、可信安全管理平台、安全服务与解决方案的综合提供商</p>
+                <a href="https://www.venustech.com.cn/" target="_blank"></a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 资测测绘 -->
+          <section class="category-section" id="asset-mapping">
+            <div class="category-header">
+              <h2 class="category-title">
+                <i class="fas fa-map"></i>
+                资测测绘
+              </h2>
+            </div>
+            <div class="link-grid">
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-globe-americas"></i>
+                  </div>
+                  <h3 class="link-title">FOFA</h3>
+                </div>
+                <p class="link-description">网络空间安全搜索引擎，快速查找全球互联网资产</p>
+                <a href="https://fofa.info/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-server"></i>
+                  </div>
+                  <h3 class="link-title">Shodan</h3>
+                </div>
+                <p class="link-description">全球首个互联网连接设备的搜索引擎，可以查找各种联网设备</p>
+                <a href="https://www.shodan.io/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-network-wired"></i>
+                  </div>
+                  <h3 class="link-title">ZoomEye</h3>
+                </div>
+                <p class="link-description">网络空间搜索引擎，提供设备指纹和组件指纹搜索</p>
+                <a href="https://www.zoomeye.org/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-fingerprint"></i>
+                  </div>
+                  <h3 class="link-title">Hunter</h3>
+                </div>
+                <p class="link-description">网络资产测绘平台，提供资产识别、漏洞发现、风险评估等服务</p>
+                <a href="https://hunter.qianxin.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-sitemap"></i>
+                  </div>
+                  <h3 class="link-title">0.zone</h3>
+                </div>
+                <p class="link-description">网络空间测绘平台，提供资产发现、漏洞扫描、风险监测等服务</p>
+                <a href="https://0.zone/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <h3 class="link-title">ThreatBook TI</h3>
+                </div>
+                <p class="link-description">微步在线威胁情报平台，提供IP、域名、文件等威胁情报查询</p>
+                <a href="https://ti.threatbook.cn/" target="_blank"></a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 信息收集 -->
+          <section class="category-section" id="info-gathering">
+            <div class="category-header">
+              <h2 class="category-title">
+                <i class="fas fa-search"></i>
+                信息收集
+              </h2>
+            </div>
+            <div class="link-grid">
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="link-title">Whois查询</h3>
+                </div>
+                <p class="link-description">域名Whois信息查询，了解域名注册信息</p>
+                <a href="https://whois.aliyun.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-cloud"></i>
+                  </div>
+                  <h3 class="link-title">DNS查询</h3>
+                </div>
+                <p class="link-description">DNS信息查询，了解域名解析情况</p>
+                <a href="https://dns.aizhan.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-code-branch"></i>
+                  </div>
+                  <h3 class="link-title">GitHub</h3>
+                </div>
+                <p class="link-description">全球最大的代码托管平台，发现开源项目和代码</p>
+                <a href="https://github.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-book"></i>
+                  </div>
+                  <h3 class="link-title">Exploit-DB</h3>
+                </div>
+                <p class="link-description">漏洞利用数据库，提供各种漏洞的利用代码和信息</p>
+                <a href="https://www.exploit-db.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-file-alt"></i>
+                  </div>
+                  <h3 class="link-title">CVE Details</h3>
+                </div>
+                <p class="link-description">CVE漏洞详情查询，了解各种漏洞的详细信息</p>
+                <a href="https://www.cvedetails.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-newspaper"></i>
+                  </div>
+                  <h3 class="link-title">安全客</h3>
+                </div>
+                <p class="link-description">安全技术分享平台，提供最新的安全资讯和技术文章</p>
+                <a href="https://www.anquanke.com/" target="_blank"></a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 漏洞平台 -->
+          <section class="category-section" id="vuln-platforms">
+            <div class="category-header">
+              <h2 class="category-title">
+                <i class="fas fa-bug"></i>
+                漏洞平台
+              </h2>
+            </div>
+            <div class="link-grid">
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <h3 class="link-title">补天漏洞响应平台</h3>
+                </div>
+                <p class="link-description">国内知名的漏洞响应平台，连接白帽子与企业，提供漏洞挖掘和修复服务</p>
+                <a href="https://www.butian.net/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-bug"></i>
+                  </div>
+                  <h3 class="link-title">漏洞盒子</h3>
+                </div>
+                <p class="link-description">专业的安全众测平台，提供漏洞挖掘、安全测试等服务</p>
+                <a href="https://www.vulbox.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-search"></i>
+                  </div>
+                  <h3 class="link-title">CNVD</h3>
+                </div>
+                <p class="link-description">国家信息安全漏洞共享平台，提供漏洞信息收集、分析和发布</p>
+                <a href="https://www.cnvd.org.cn/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-database"></i>
+                  </div>
+                  <h3 class="link-title">CNNVD</h3>
+                </div>
+                <p class="link-description">国家信息安全漏洞库，提供漏洞信息查询和安全公告</p>
+                <a href="http://www.cnnvd.org.cn/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="link-title">CVE</h3>
+                </div>
+                <p class="link-description">通用漏洞披露数据库，全球标准的漏洞编号系统</p>
+                <a href="https://cve.mitre.org/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h3 class="link-title">HackerOne</h3>
+                </div>
+                <p class="link-description">全球领先的漏洞赏金平台，连接企业与安全研究人员</p>
+                <a href="https://hackerone.com/" target="_blank"></a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 黑客社区 -->
+          <section class="category-section" id="hacker-community">
+            <div class="category-header">
+              <h2 class="category-title">
+                <i class="fas fa-users"></i>
+                黑客社区
+              </h2>
+            </div>
+            <div class="link-grid">
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-comments"></i>
+                  </div>
+                  <h3 class="link-title">先知社区</h3>
+                </div>
+                <p class="link-description">阿里云安全先知社区，安全技术分享与交流平台</p>
+                <a href="https://xz.aliyun.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <h3 class="link-title">看雪学院</h3>
+                </div>
+                <p class="link-description">专业的逆向工程和软件安全技术学习平台</p>
+                <a href="https://www.kanxue.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <h3 class="link-title">i春秋</h3>
+                </div>
+                <p class="link-description">网络安全在线教育平台，提供安全技能培训和实战演练</p>
+                <a href="https://www.ichunqiu.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <h3 class="link-title">FreeBuf</h3>
+                </div>
+                <p class="link-description">国内知名的网络安全行业门户，提供安全资讯、技术文章和工具</p>
+                <a href="https://www.freebuf.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-terminal"></i>
+                  </div>
+                  <h3 class="link-title">T00ls</h3>
+                </div>
+                <p class="link-description">低调求发展的安全技术社区，专注于安全技术交流</p>
+                <a href="https://www.t00ls.net/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-flag"></i>
+                  </div>
+                  <h3 class="link-title">CTFHub</h3>
+                </div>
+                <p class="link-description">CTF竞赛平台，提供网络安全竞赛题目和训练环境</p>
+                <a href="https://www.ctfhub.com/" target="_blank"></a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 勒索应急 -->
+          <section class="category-section" id="ransomware-emergency">
+            <div class="category-header">
+              <h2 class="category-title">
+                <i class="fas fa-ambulance"></i>
+                勒索应急
+              </h2>
+            </div>
+            <div class="link-grid">
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <h3 class="link-title">360勒索病毒搜索引擎</h3>
+                </div>
+                <p class="link-description">360提供的勒索病毒搜索和解密工具，帮助用户识别和解决勒索病毒问题</p>
+                <a href="https://lesuobingdu.360.cn/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-key"></i>
+                  </div>
+                  <h3 class="link-title">腾讯哈勃分析系统</h3>
+                </div>
+                <p class="link-description">腾讯安全提供的恶意软件分析平台，支持勒索病毒检测和分析</p>
+                <a href="https://habo.qq.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-unlock"></i>
+                  </div>
+                  <h3 class="link-title">卡巴斯基解密工具</h3>
+                </div>
+                <p class="link-description">卡巴斯基提供的免费勒索病毒解密工具集合</p>
+                <a href="https://noransom.kaspersky.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-tools"></i>
+                  </div>
+                  <h3 class="link-title">Emsisoft解密工具</h3>
+                </div>
+                <p class="link-description">Emsisoft提供的勒索病毒解密工具，支持多种勒索病毒家族</p>
+                <a href="https://www.emsisoft.com/ransomware-decryption-tools/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-database"></i>
+                  </div>
+                  <h3 class="link-title">ID Ransomware</h3>
+                </div>
+                <p class="link-description">勒索病毒识别工具，帮助用户识别感染的勒索病毒类型</p>
+                <a href="https://id-ransomware.malwarehunterteam.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-life-ring"></i>
+                  </div>
+                  <h3 class="link-title">No More Ransom</h3>
+                </div>
+                <p class="link-description">国际反勒索病毒项目，提供免费解密工具和预防建议</p>
+                <a href="https://www.nomoreransom.org/" target="_blank"></a>
+              </div>
+            </div>
+          </section>
+
+          <!-- AI大模型 -->
+          <section class="category-section" id="ai-models">
+            <div class="category-header">
+              <h2 class="category-title">
+                <i class="fas fa-robot"></i>
+                AI大模型
+              </h2>
+            </div>
+            <div class="link-grid">
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-comments"></i>
+                  </div>
+                  <h3 class="link-title">ChatGPT</h3>
+                </div>
+                <p class="link-description">OpenAI开发的大型语言模型，提供智能对话和文本生成服务</p>
+                <a href="https://chat.openai.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-brain"></i>
+                  </div>
+                  <h3 class="link-title">文心一言</h3>
+                </div>
+                <p class="link-description">百度推出的知识增强大语言模型，提供中文对话和内容创作</p>
+                <a href="https://yiyan.baidu.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h3 class="link-title">通义千问</h3>
+                </div>
+                <p class="link-description">阿里云推出的大语言模型，提供智能问答和内容生成服务</p>
+                <a href="https://tongyi.aliyun.com/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <h3 class="link-title">讯飞星火</h3>
+                </div>
+                <p class="link-description">科大讯飞推出的认知智能大模型，具备语言理解、知识问答、逻辑推理等能力</p>
+                <a href="https://xinghuo.xfyun.cn/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <h3 class="link-title">智谱清言</h3>
+                </div>
+                <p class="link-description">智谱AI推出的对话式AI助手，基于GLM大模型技术</p>
+                <a href="https://chatglm.cn/" target="_blank"></a>
+              </div>
+              
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fas fa-magic"></i>
+                  </div>
+                  <h3 class="link-title">Claude</h3>
+                </div>
+                <p class="link-description">Anthropic开发的AI助手，具备强大的对话和分析能力</p>
+                <a href="https://claude.ai/" target="_blank"></a>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <p>&copy; 2024 WebStack. 专注网络安全资源导航.</p>
+        </footer>
+      </div>
     </div>
 
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" id="themeToggle">
-      <i class="fas fa-moon"></i>
-      <!-- Default to moon (dark mode) -->
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+      <button class="back-to-top" id="backToTopFloating">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+      <button class="theme-toggle" id="themeToggleFloating">
+        <i class="fas fa-moon"></i>
+      </button>
     </div>
 
-    <!-- Header -->
-    <header>
-      <div class="header-bg"></div>
-      <div class="header-content">
-        <h1 class="animate-fade-in">
-    Sec Navigation</h1>
-
-        <div
-          class="search-container animate-fade-in"
-          style="animation-delay: 0.4s"
-        >
-          <i class="fas fa-search search-icon"></i>
-          <input
-            type="text"
-            class="search-input"
-            placeholder="站内搜索..."
-            id="searchInput"
-          />
-        </div>
-      </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="category-nav">
-      <div class="nav-container">
-        <ul class="nav-list">
-          <!-- Initial active state on first item -->
-          <li class="nav-item">
-            <a href="#Threat-Intelligence" class="nav-link active">威胁情报</a>
-          </li>
-          <li class="nav-item">
-            <a href="#Mapping" class="nav-link">资测测绘</a>
-          </li>
-          <li class="nav-item">
-            <a href="#GatherInfo" class="nav-link">信息收集</a>
-          </li>
-          <li class="nav-item">
-            <a href="#Vulnerability" class="nav-link">漏洞平台</a>
-          </li>
-          <li class="nav-item">
-            <a href="#hackers" class="nav-link">黑客社区</a>
-          </li>
-          <li class="nav-item">
-            <a href="#Emergency" class="nav-link">勒索应急</a>
-          </li>
-          <li class="nav-item">
-            <a href="#Large-Models" class="nav-link">AI大模型</a>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main>
-      <!-- 威胁情报开始 -->
-      <section class="category-section" id="Threat-Intelligence">
-        <div class="category-header">
-          <h2 class="category-title"><i class="fa-solid fa-circle-radiation"></i> 威胁情报</h2>
-          <div class="category-line"></div>
-        </div>
-        <div class="link-grid">
-          <div class="link-card animate-fade-in" style="animation-delay: 0.05s">
-            <a href="https://x.threatbook.com/" target="_blank"></a>
-            <i class="fa-brands  link-icon">
-           <img src="https://x.threatbook.com/public/asset/img/favicon.ico?t=1" alt="Threatbook " >
-             </i>
-            <h3 class="link-title">微步在线X情报社区</h3>
-            <span class="category-badge">Threatbook</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.1s">
-            <a href="https://ti.qianxin.com/v2/search?type=ip&value=" target="_blank"></a>
-            <i class="fa-brands link-icon">
-            <img src="https://ti.qianxin.com/microapps/home-ti/logo/zh.svg" alt="Qianxin " >
-            </i>
-            <h3 class="link-title">奇安信威胁情报</h3>
-            <span class="category-badge">Qianxin</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.15s">
-            <a href="https://ti.360.com/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-            <img src="https://p5.ssl.qhimg.com/t11b673bcd6a5e10e97f8fb19f2.png" alt="360安全大脑 ">
-             </i>
-            <h3 class="link-title">360政企安全集团</h3>
-            <span class="category-badge">360</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.2s">
-            <a href="https://ti.nsfocus.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://ti.nsfocus.com/favicon.ico" alt="NTI威胁情报中心 ">
-            </i>
-            <h3 class="link-title">NTI威胁情报中心</h3>
-            <span class="category-badge">绿盟科技</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.25s">
-            <a href="https://tix.qq.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-           <img src="https://tix.qq.com/favicon.ico" alt="腾讯威胁情报中心" height="60" width="60">
-            </i>
-            <h3 class="link-title">腾讯威胁情报中心</h3>
-            <span class="category-badge">腾讯安全</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.3s">
-            <a href="https://ti.dbappsecurity.com.cn/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://ti.dbappsecurity.com.cn/favicon.png" alt="安全星图平台 ">
-            </i>
-            <h3 class="link-title">安全星图平台</h3>
-            <span class="category-badge">安恒信息</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.35s">
-            <a href="https://redqueen.tj-un.com/IntelHome.html" target="_blank"></a>
-            <i class="fa-brands link-icon">
-            <img src="https://redqueen.tj-un.com/favicon.png" alt="RedQueen威胁情报中心 ">
-            </i>
-            <h3 class="link-title">RedQueen威胁情报中心</h3>
-            <span class="category-badge">天际友盟</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.4s">
-            <a href="https://exchange.xforce.ibmcloud.com/" target="_blank"></a>
-            <i class="fa-regular link-icon">
-           <img src="https://exchange.xforce.ibmcloud.com/images/shortcut-icons/apple-icon-180x180.png" alt="IBM X-Force Exchange " height="60" width="60">
-            </i>
-            <h3 class="link-title">IBM X-Force Exchange</h3>
-            <span class="category-badge">IBM Security</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.45s">
-            <a href="https://www.virustotal.com/gui/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://www.virustotal.com/gui/images/manifest/icon-192x192.png" alt="Virustotal " height="60" width="60">
-            </i>
-            <h3 class="link-title">Virustotal</h3>
-            <span class="category-badge">Virustotal</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.5s">
-            <a href="https://habo.qq.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://habo.qq.com/favicon.ico" alt="哈勃分析系统 ">
-            </i>
-            <h3 class="link-title">哈勃分析系统</h3>
-            <span class="category-badge">腾讯安全</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.55s">
-            <a href="https://sandbox.freebuf.com/detect" target="_blank"></a>
-            <i class="fa-solid link-icon">
-           <img src="https://sandbox.freebuf.com/favicon.ico" alt=" 大圣云沙箱检测系统 ">
-             </i>
-            <h3 class="link-title">大圣云沙箱检测系统</h3>
-            <span class="category-badge">斗象科技</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.6s">
-            <a href="https://www.hybrid-analysis.com/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-            <img src="https://www.hybrid-analysis.com/favicon.ico" alt=" Hybrid Analysis ">
-             </i>
-            <h3 class="link-title">Hybrid Analysis</h3>
-            <span class="category-badge">Hybrid Analysis</span>
-          </div>
-                 
-        </div>
-      </section>
-
-      <!-- 资产测绘开始 -->
-      <section class="category-section" id="Mapping">
-        <div class="category-header">
-          <h2 class="category-title">
-            <i class="fa-solid fa-map"></i> 资产测绘
-          </h2>
-          <div class="category-line"></div>
-        </div>
-        <div class="link-grid">
-          <div class="link-card animate-fade-in" style="animation-delay: 0.05s">
-            <a href="https://fofa.info/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-            <img src="https://fofa.info/favicon.ico" alt="FOFA ">
-             </i>
-            <h3 class="link-title">FOFA网络空间测绘</h3>
-            <span class="category-badge">华顺信安</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.1s">
-            <a href="https://hunter.qianxin.com/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-           <img src="https://www.qianxin.com/favicon.ico" alt="Hunter " height="60" width="60">
-           </i>
-            <h3 class="link-title">Hunter鹰图</h3>
-            <span class="category-badge">Qianxin</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.15s">
-            <a href="https://quake.360.net/quake/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-            <img src="https://quake.360.net/quake/static/index/favicon.ico" alt="Quake ">
-           </i>
-            <h3 class="link-title">360安全大脑网络空间测绘</h3>
-            <span class="category-badge">360</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.2s">
-            <a href="https://x.threatbook.com/v5/mapping" target="_blank"></a>
-            <i class="fa-brands link-icon">
-            <img src="https://x.threatbook.com/public/asset/img/favicon.ico?t=1" alt="资产测绘 ">
-           </i>
-            <h3 class="link-title">微步X情报社区</h3>
-            <span class="category-badge">Threatbook</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.25s">
-            <a href="https://www.zoomeye.org/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-           <img src="https://www.zoomeye.hk/static/public/favicon.ico" alt="zoomeye " height="60" width="60">
-            </i>
-            <h3 class="link-title">知道创宇网络空间雷达</h3>
-            <span class="category-badge">Zoomeye</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.3s">
-            <a href="https://0.zone/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-         <img src="https://0.zone/favicon.png" alt="0.Zone ">
-            </i>
-            <h3 class="link-title">0.zone攻击面管理系统</h3>
-            <span class="category-badge">零零信安</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.35s">
-            <a href="https://www.shodan.io/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://www.shodan.io/static/img/apple-touch-icon-192-4eb04af5.png" alt="Shodan " height="60" width="60">
-            </i>
-            <h3 class="link-title">Shodan Search Engine</h3>
-            <span class="category-badge">Shodan</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.4s">
-            <a href="https://search.censys.io/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-          <img src="https://cdn.craft.cloud/c8021849-16e4-4625-8a76-b4f9958b5e89/builds/9ead009a-dac0-45f8-9c98-1d0860c411d0/artifacts/dist/favicon.ico" alt="Censys " height="60" width="60">
-           </i>
-            <h3 class="link-title">Censys Search</h3>
-            <span class="category-badge">Censys</span>
-          </div>     
-        </div>
-      </section>
-
-      <!-- 信息收集开始 -->
-      <section class="category-section" id="GatherInfo">
-        <div class="category-header">
-          <h2 class="category-title"><i class="fa-solid fa-sitemap"></i> 信息收集</h2>
-          <div class="category-line"></div>
-        </div>
-        <div class="link-grid">
-          <div class="link-card animate-fade-in" style="animation-delay: 0.05s">
-            <a href="https://www.tianyancha.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://www.tianyancha.com/favicon.ico" alt="天眼查 ">
-             </i>
-            <h3 class="link-title">查公司,查老板,查关系...</h3>
-            <span class="category-badge">天眼查</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.1s">
-            <a href="https://ping.chinaz.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://csstools.chinaz.com/favicon.ico" alt="超级Ping ">
-             </i>
-            <h3 class="link-title">超级Ping</h3>
-            <span class="category-badge">Chinaz站长工具</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.15s">
-            <a href="https://site.ip138.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://site.ip138.com/favicon.ico" alt="Ip138查询 ">
-            </i>
-            <h3 class="link-title">iP反查网站 同一iP网站</h3>
-            <span class="category-badge">Ip138</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.2s">
-            <a href="https://www.ipuu.net/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-           <img src="https://www.ipuu.net/favicon.ico" alt="IP定位查询 ">
-            </i>
-            <h3 class="link-title">IP定位查询</h3>
-            <span class="category-badge">埃文科技</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.25s">
-            <a href="https://web-check.xyz/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/web-check.ico" alt="Web Check ">
-            </i>
-            <h3 class="link-title">网址综合信息查询</h3>
-            <span class="category-badge">Web Check</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.3s">
-            <a href="https://grep.app/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://grep.app/icon.png?27d38f126102b607" alt="grep.app ">
-           </i>
-            <h3 class="link-title">全网代码搜索</h3>
-            <span class="category-badge">grep.app </span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.35s">
-            <a href="https://centralops.net/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://centralops.net/favicon.ico" alt="Whois查询">
-            </i>
-            <h3 class="link-title"> Free online network tools</h3>
-            <span class="category-badge">CentralOps</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.4s">
-            <a href="https://dnsdumpster.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://dnsdumpster.com/favicon.ico" alt="DNS解析查询">
-             </i>
-            <h3 class="link-title">DNS解析查询</h3>
-            <span class="category-badge">DNSDumpster</span>
-          </div>
-   <div class="link-card animate-fade-in" style="animation-delay: 0.4s">
-            <a href="https://www.cmd5.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-           <img src="https://www.cmd5.com/favicon.ico" alt="cmd5">
-             </i>
-            <h3 class="link-title">md5在线解密破解</h3>
-            <span class="category-badge">cmd5</span>
-          </div>
-
-<div class="link-card animate-fade-in" style="animation-delay: 0.4s">
-            <a href="https://forum.ywhack.com/password.php" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://forum.ywhack.com/favicon.ico" alt="默认密码查询 ">
-             </i>
-            <h3 class="link-title">默认密码查询</h3>
-            <span class="category-badge">棱角安全团队</span>
-          </div>
-
-<div class="link-card animate-fade-in" style="animation-delay: 0.4s">
-            <a href="https://mogua.co/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://mogua.co/static/img/favicon.ico" alt="摸瓜 ">
-             </i>
-            <h3 class="link-title">APK反编译,APK反编译工具</h3>
-            <span class="category-badge">摸瓜</span>
-          </div>
-
-<div class="link-card animate-fade-in" style="animation-delay: 0.4s">
-            <a href="https://sec.lintstar.top/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://sec.lintstar.top/static/favicon.ico" alt="sec.lintstar.top ">
-             </i>
-            <h3 class="link-title">凌星阁红队作战平台</h3>
-            <span class="category-badge">sec.lintstar.top </span>
-          </div>
-       
-        </div>
-      </section>
-
-      <!-- 漏洞平台开始 -->
-      <section class="category-section" id="Vulnerability">
-        <div class="category-header">
-          <h2 class="category-title">
-            <i class="fa-solid fa-bugs"></i> 漏洞平台
-          </h2>
-          <div class="category-line"></div>
-        </div>
-        <div class="link-grid">
-          <div class="link-card animate-fade-in" style="animation-delay: 0.05s">
-            <a href="https://www.cnnvd.org.cn/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-           <img src="https://www.cnnvd.org.cn/favicon.ico" alt="CNNVD" height="60" width="60">
-            </i>
-            <h3 class="link-title"> 国家信息安全漏洞库</h3>
-            <span class="category-badge">CNNVD</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.1s">
-            <a href="https://cve.mitre.org/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-          <img src="https://cve.mitre.org/favicon.ico" alt="CVE漏洞库">
-            </i>
-            <h3 class="link-title">CVE漏洞库</h3>
-            <span class="category-badge">CVE</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.15s">
-            <a href="https://www.exploit-db.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-           <img src="https://www.exploit-db.com/favicon.ico" alt="Exploit Database ">
-            </i>
-            <h3 class="link-title">Exploit Database </h3>
-            <span class="category-badge"> OffSec</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.2s">
-            <a href="https://cn.0day.today/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/0day.ico" alt="0day.today ">
-           </i>
-            <h3 class="link-title">漏洞利用市场</h3>
-            <span class="category-badge">0day.today</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.25s">
-            <a href="https://avd.aliyun.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-           <img src="https://avd.aliyun.com/static/favicon.ico" alt="阿里云漏洞库 ">
-            </i>
-            <h3 class="link-title">阿里云漏洞库</h3>
-            <span class="category-badge">Alibaba Cloud Security Team</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.3s">
-            <a href="https://www.nsfocus.net/index.php?act=sec_bug" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://www.nsfocus.net/favicon.ico" alt="绿盟漏洞库">
-             </i>
-            <h3 class="link-title">NSFOCUS绿盟科技</h3>
-            <span class="category-badge">Nsfocus</span>
-          </div>
-         
-        </div>
-      </section>
-
-      <!-- 黑客社区开始 -->
-      <section class="category-section" id="hackers">
-        <div class="category-header">
-          <h2 class="category-title"><i class="fa-solid fa-users"></i> 黑客社区</h2>
-          <div class="category-line"></div>
-        </div>
-        <div class="link-grid">
-          <div class="link-card animate-fade-in" style="animation-delay: 0.05s">
-            <a href="https://vx-underground.org/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-            <img src="https://vx-underground.org/favicon.ico" alt="vx-underground ">
-            </i>
-            <h3 class="link-title">安全代码存储库</h3>
-            <span class="category-badge">vx-underground</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.1s">
-            <a href="http://xxxxxxxxxs6qbnahsbvxbghsnqh4rj6whbyblqtnmetf7vell2fmxmad.onion/" target="_blank"></a>
-            <i class="fa-solid fa-user-secret link-icon">
-            </i>
-            <h3 class="link-title">暗网中文论坛</h3>
-            <span class="category-badge">暗网</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.15s">
-            <a href="https://unknownw.com/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-            <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/unknownw.png" alt="unknownw " height="60" width="60">
-            </i>
-            <h3 class="link-title">unknownw社区</h3>
-            <span class="category-badge">unknownw</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.2s">
-            <a href="https://breached.fi/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/BreachForums.png" alt="BreachForums" height="60" width="60">     
-            </i>
-            <h3 class="link-title">breachforums</h3>
-            <span class="category-badge">breachforums</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.25s">
-            <a href="https://forum.butian.net/community" target="_blank"></a>
-            <i class="fa-solid link-icon">
-             <img src="https://forum.butian.net/ico.png" alt="奇安信攻防社区 " height="60" width="60">
-             </i>
-            <h3 class="link-title">奇安信攻防社区 </h3>
-            <span class="category-badge">Qianxin</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.3s">
-            <a href="https://www.t00ls.com/index.php" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://www.t00ls.com/favicon.ico" alt="T00ls论坛 " height="60" width="60">
-            </i>
-            <h3 class="link-title">T00ls论坛</h3>
-            <span class="category-badge">T00ls</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.35s">
-            <a href="https://xz.aliyun.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://xz.aliyun.com/favicon.ico" alt="先知社区 ">
-             </i>
-            <h3 class="link-title">先知社区</h3>
-            <span class="category-badge">Aliyun</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- 勒索应急开始 -->
-      <section class="category-section" id="Emergency">
-        <div class="category-header">
-          <h2 class="category-title">
-            <i class="fa-solid fa-shield-virus"></i> 勒索应急          </h2>
-          <div class="category-line"></div>
-        </div>
-        <div class="link-grid">
-          <div class="link-card animate-fade-in" style="animation-delay: 0.05s">
-            <a href="https://www.nomoreransom.org/zh/decryption-tools.html" target="_blank"></a>
-            <i class="fa-solid link-icon">
-             <img src="https://www.nomoreransom.org/assets/icons/icon-512x512.png" alt="勒索解密查询" height="60" width="60">
-            </i>
-            <h3 class="link-title">勒索解密查询</h3>
-            <span class="category-badge"> nomoreransom.org</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.1s">
-            <a href="https://id-ransomware.malwarehunterteam.com/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-          <img src="https://id-ransomware.malwarehunterteam.com/assets/images/favicons/favicon.ico" alt="ID Ransomware ">
-            </i>
-            <h3 class="link-title">ID Ransomware </h3>
-            <span class="category-badge">MalwareHunterTeam</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.15s">
-            <a href="https://noransom.kaspersky.com/zh/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://noransom.kaspersky.com/content/themes/ransomware2/favicon.png" alt="免费勒索软件解密器 ">
-            </i>
-            <h3 class="link-title">免费勒索软件解密器 </h3>
-            <span class="category-badge">卡巴斯基实验室 </span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.2s">
-            <a href="https://www.avast.com/zh-cn/ransomware-decryption-tools#pc" target="_blank"></a>
-            <i class="fa-solid link-icon">
-          <img src="https://static3.avast.com/10003974/web/i/v2/components/logos/avast-logos/seo/apple-touch-icon.png?v=2" alt="免费勒索软件解密工具 " height="60" width="60">
-            </i>
-            <h3 class="link-title">免费勒索软件解密工具</h3>
-            <span class="category-badge">Avast</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.25s">
-            <a href="https://lesuobingdu.360.cn/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://www.360.cn/favicon.ico" alt="勒索病毒解密 ">
-            </i>
-            <h3 class="link-title">360勒索病毒解密</h3>
-            <span class="category-badge">360</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.3s">
-            <a href="https://lesuobingdu.qianxin.com/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-             <img src="https://lesuobingdu.qianxin.com/favicon.ico" alt="勒索病毒搜索引擎 ">
-            </i>
-            <h3 class="link-title">勒索病毒搜索引擎</h3>
-            <span class="category-badge">Qianxin</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.35s">
-            <a href="https://lesuo.venuseye.com.cn/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-             <img src="https://lesuo.venuseye.com.cn/favicon.ico" alt="VenusEye勒索病毒搜索引擎 ">
-             </i>
-            <h3 class="link-title">VenusEye勒索病毒搜索引擎</h3>
-            <span class="category-badge">启明星辰</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.4s">
-            <a href="https://guanjia.qq.com/pr/ls/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-             <img src="https://guanjia.qq.com/favicon.ico" alt="勒索病毒搜索">
-            </i>
-            <h3 class="link-title">腾讯勒索病毒搜索引擎</h3>
-            <span class="category-badge">腾讯电脑管家</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- AI大模型开始 -->
-      <section class="category-section" id="Large-Models">
-        <div class="category-header">
-          <h2 class="category-title">
-            <i class="fa-solid fa-robot"></i> AI大模型          </h2>
-          <div class="category-line"></div>
-        </div>
-        <div class="link-grid">
-          <div class="link-card animate-fade-in" style="animation-delay: 0.05s">
-            <a href="https://chat.openai.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-             <img src="https://openai.com/icon.svg?d5c238c2cf2e4f08" alt="ChatGpt" height="60" width="60">
-            </i>
-            <h3 class="link-title">Chatgpt</h3>
-            <span class="category-badge"> Openai</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.1s">
-            <a href="https://chat.deepseek.com/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-          <img src="https://cdn.deepseek.com/chat/icon.png" alt="Deepseek " height="60" width="60">
-            </i>
-            <h3 class="link-title">Deepseek </h3>
-            <span class="category-badge">深度求索</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.15s">
-            <a href="https://tongyi.aliyun.com/qianwen/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://img.alicdn.com/imgextra/i4/O1CN01EfJVFQ1uZPd7W4W6i_!!6000000006051-2-tps-112-112.png" alt="通义千问 " height="60" width="60">
-            </i>
-            <h3 class="link-title">通义千问 </h3>
-            <span class="category-badge">Aliyun</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.2s">
-            <a href="https://gemini.google.com/app" target="_blank"></a>
-            <i class="fa-solid link-icon">
-          <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Gemini">
-            </i>
-            <h3 class="link-title">Gemini</h3>
-            <span class="category-badge">Google</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.25s">
-            <a href="https://kimi.moonshot.cn/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-            <img src="https://statics.moonshot.cn/kimi-web-seo/assets/favicon-OXkYivQY.ico" alt="KiMi">
-            </i>
-            <h3 class="link-title">KiMi</h3>
-            <span class="category-badge">月之暗面</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.3s">
-            <a href="https://www.doubao.com/chat/" target="_blank"></a>
-            <i class="fa-brands link-icon">
-             <img src="https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/logo-doubao-overflow.png" alt="豆包 " height="60" width="60">
-            </i>
-            <h3 class="link-title">豆包</h3>
-            <span class="category-badge">字节跳动</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.35s">
-            <a href="https://grok.com/" target="_blank"></a>
-            <i class="fa-solid link-icon">
-             <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/Grok.png" alt="Grok">
-             </i>
-            <h3 class="link-title">Grok</h3>
-            <span class="category-badge">X</span>
-          </div>
-          <div class="link-card animate-fade-in" style="animation-delay: 0.4s">
-            <a href="https://copilot.microsoft.com" target="_blank"></a>
-            <i class="fa-solid link-icon">
-             <img src="https://studiostaticassetsprod.azureedge.net/bundle-cmc/favicon.svg" alt="Copilot" height="60" width="60">
-            </i>
-            <h3 class="link-title">Copilot</h3>
-            <span class="category-badge">微软必应</span>
-          </div>
-        </div>
-      </section>
-
-
-    </main>
-
-    <!-- Footer Removed -->
-    <footer>
-     <div class="header-content">
-        <p>© 2024-2025 DarkBlack. 保留所有权利。</p>
-      </div>
-    </footer>
-
-
-    <!-- Back to top button -->
-    <div class="back-to-top" id="backToTop">
-      <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- JavaScript -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Preloader
-        setTimeout(function () {
-          document.querySelector(".preloader").classList.add("hidden");
-        }, 800); // Adjust timing as needed
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.getElementById("sidebar");
+        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+        const backToTopFloatingButton = document.getElementById("backToTopFloating");
+        const themeToggleFloatingButton = document.getElementById("themeToggleFloating");
+        const searchInput = document.querySelector(".search-input");
+        const categoryLinks = document.querySelectorAll(".nav-link");
+        const categorySections = document.querySelectorAll(".category-section");
 
-        // Navigation active state & Smooth Scroll
-        const navLinks = document.querySelectorAll(".nav-link");
-        const sections = document.querySelectorAll(".category-section");
-        const navContainer = document.querySelector(".nav-container"); // Get the container for scrolling
-
-        // Function to set active link
-        function setActiveLink(targetId) {
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === `#${targetId}`) {
-              link.classList.add("active");
-              // Scroll the nav container to show the active link if needed
-              const activeLinkElement = link.parentElement; // Get the li element
-              const containerRect = navContainer.getBoundingClientRect();
-              const linkRect = activeLinkElement.getBoundingClientRect();
-
-              // Calculate scroll position
-              const scrollLeft = navContainer.scrollLeft;
-              const linkOffsetLeft = activeLinkElement.offsetLeft;
-              const linkWidth = activeLinkElement.offsetWidth;
-              const containerWidth = navContainer.clientWidth;
-
-              // Check if link is fully or partially outside the view
-              const scrollTarget =
-                linkOffsetLeft - containerWidth / 2 + linkWidth / 2;
-
-              navContainer.scrollTo({
-                left: scrollTarget,
-                behavior: "smooth",
-              });
-            }
+        // Mobile menu toggle
+        if (mobileMenuToggle) {
+          mobileMenuToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
           });
         }
 
-        navLinks.forEach((link) => {
+        // Theme toggle
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme) {
+          document.documentElement.setAttribute("data-theme", currentTheme);
+          if (currentTheme === "dark") {
+            themeToggleFloatingButton.querySelector("i").classList.replace("fa-moon", "fa-sun");
+          } else {
+            themeToggleFloatingButton.querySelector("i").classList.replace("fa-sun", "fa-moon");
+          }
+        }
+
+        const toggleTheme = () => {
+          let theme = document.documentElement.getAttribute("data-theme");
+          if (theme === "dark") {
+            document.documentElement.removeAttribute("data-theme");
+            localStorage.setItem("theme", "light");
+            themeToggleFloatingButton.querySelector("i").classList.replace("fa-sun", "fa-moon");
+          } else {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+            themeToggleFloatingButton.querySelector("i").classList.replace("fa-moon", "fa-sun");
+          }
+        };
+
+        themeToggleFloatingButton.addEventListener("click", toggleTheme);
+
+        // Back to top button
+        const scrollToTop = () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        };
+
+        backToTopFloatingButton.addEventListener("click", scrollToTop);
+
+        // Show/hide back to top button based on scroll position
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 200) {
+            backToTopFloatingButton.style.display = "flex";
+          } else {
+            backToTopFloatingButton.style.display = "none";
+          }
+        });
+
+        // Search functionality
+        searchInput.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            const query = searchInput.value;
+            if (query) {
+              window.open(`https://www.baidu.com/s?wd=${query}`, "_blank");
+            }
+          }
+        });
+
+        // Smooth scroll for sidebar navigation
+        categoryLinks.forEach((link) => {
           link.addEventListener("click", function (e) {
             e.preventDefault();
             const targetId = this.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
 
-            setActiveLink(targetId); // Set active class immediately
-
             if (targetSection) {
-              // Calculate offset considering the sticky nav height (adjust 70px if needed)
-              const offsetTop = targetSection.offsetTop - 70;
               window.scrollTo({
-                top: offsetTop,
+                top: targetSection.offsetTop - 80, // Adjust for fixed header
                 behavior: "smooth",
               });
 
-              // Update URL hash without causing immediate scroll jump
-              // Use replaceState to avoid polluting history too much on clicks
-              if (history.replaceState) {
-                history.replaceState(null, null, `#${targetId}`);
-              } else {
-                window.location.hash = `#${targetId}`; // Fallback
-              }
+              // Remove active class from all links
+              categoryLinks.forEach((l) => l.classList.remove("active"));
+              // Add active class to the clicked link
+              this.classList.add("active");
             }
           });
         });
 
-        // Back to top button
-        const backToTopButton = document.getElementById("backToTop");
+        // Highlight active sidebar link on scroll
+        const observerOptions = {
+          root: null,
+          rootMargin: "-90px 0px -50% 0px", // Adjust this to control when sections become active
+          threshold: 0,
+        };
 
-        window.addEventListener(
-          "scroll",
-          function () {
-            // Back to top visibility
-            if (window.pageYOffset > 300) {
-              backToTopButton.classList.add("visible");
-            } else {
-              backToTopButton.classList.remove("visible");
-            }
-
-            // Update active nav link based on scroll position (debounced slightly)
-            let currentSectionId = "";
-            let minDistance = Infinity;
-
-            sections.forEach((section) => {
-              const sectionTop = section.offsetTop - 100; // Adjust offset as needed
-              // Use distance to center of viewport for better accuracy
-              const distanceToCenter = Math.abs(
-                window.pageYOffset +
-                  window.innerHeight / 2 -
-                  (sectionTop + section.offsetHeight / 2)
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const currentActive = document.querySelector(".nav-link.active");
+              if (currentActive) {
+                currentActive.classList.remove("active");
+              }
+              const correspondingLink = document.querySelector(
+                `.nav-link[data-category="${entry.target.id}"]`
               );
-
-              if (distanceToCenter < minDistance) {
-                minDistance = distanceToCenter;
-                currentSectionId = section.getAttribute("id");
-              }
-            });
-
-            // Handle case where no section is actively in view (e.g., top or bottom)
-            if (
-              !currentSectionId &&
-              window.pageYOffset < sections[0].offsetTop - 100
-            ) {
-              currentSectionId = sections[0].getAttribute("id"); // Default to first section if scrolled above all
-            } else if (
-              !currentSectionId &&
-              sections.length > 0 && // Add check for empty sections array
-              window.pageYOffset >=
-                sections[sections.length - 1].offsetTop -
-                  100 +
-                  sections[sections.length - 1].offsetHeight
-            ) {
-              currentSectionId =
-                sections[sections.length - 1].getAttribute("id"); // Default to last if scrolled past all
-            }
-
-            if (currentSectionId) {
-              setActiveLink(currentSectionId);
-            }
-          },
-          200
-        ); // Debounce scroll event slightly
-
-        backToTopButton.addEventListener("click", function () {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        });
-
-        // Theme toggle
-        const themeToggle = document.getElementById("themeToggle");
-        const themeIcon = themeToggle.querySelector("i");
-
-        // Function to apply theme
-        function applyTheme(theme) {
-          if (theme === "light") {
-            document.body.classList.add("light-mode");
-            themeIcon.classList.remove("fa-moon");
-            themeIcon.classList.add("fa-sun");
-          } else {
-            document.body.classList.remove("light-mode");
-            themeIcon.classList.remove("fa-sun");
-            themeIcon.classList.add("fa-moon");
-          }
-        }
-
-        // Check for saved theme preference or system preference
-        const savedTheme = localStorage.getItem("theme");
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-        // Initialize theme based on saved pref or system pref
-        if (savedTheme) {
-          applyTheme(savedTheme);
-        } else if (prefersDark) {
-          applyTheme("dark");
-        } else {
-          applyTheme("light"); // Default to light if no preference
-        }
-
-        themeToggle.addEventListener("click", function () {
-          const isLightMode = document.body.classList.toggle("light-mode");
-          const newTheme = isLightMode ? "light" : "dark";
-          applyTheme(newTheme);
-          localStorage.setItem("theme", newTheme);
-        });
-
-        // Listen for changes in system preference
-        window
-          .matchMedia("(prefers-color-scheme: dark)")
-          .addEventListener("change", (e) => {
-            // Only change if no theme is explicitly saved by the user
-            if (!localStorage.getItem("theme")) {
-              applyTheme(e.matches ? "dark" : "light");
-            }
-          });
-
-        // Search functionality
-        const searchInput = document.getElementById("searchInput");
-        const allCards = document.querySelectorAll(".link-grid .link-card"); // More specific selector
-
-        searchInput.addEventListener("input", function () {
-          const searchTerm = this.value.toLowerCase().trim();
-          let sectionsToShow = new Set(); // Keep track of sections with matches
-
-          allCards.forEach((card) => {
-            const title = card
-              .querySelector(".link-title")
-              .textContent.toLowerCase();
-            const badge =
-              card
-                .querySelector(".category-badge")
-                ?.textContent.toLowerCase() || ""; // Handle missing badge
-            const link = card.querySelector("a")?.href.toLowerCase() || ""; // Search link too
-            const matchesSearch =
-              title.includes(searchTerm) ||
-              badge.includes(searchTerm) ||
-              link.includes(searchTerm);
-
-            card.style.display = matchesSearch ? "flex" : "none";
-
-            if (matchesSearch) {
-              // Add the parent section's ID to the set
-              const parentSection = card.closest(".category-section");
-              if (parentSection) {
-                sectionsToShow.add(parentSection.id);
+              if (correspondingLink) {
+                correspondingLink.classList.add("active");
               }
             }
           });
+        }, observerOptions);
 
-          // Show/hide sections based on whether they contain matching cards
-          sections.forEach((section) => {
-            // If search term is empty, always show section
-            if (searchTerm === "" || sectionsToShow.has(section.id)) {
-              section.style.display = "block";
-            } else {
-              section.style.display = "none";
-            }
-          });
-
-          // If search is empty, ensure all cards within visible sections are shown
-          if (searchTerm === "") {
-            allCards.forEach((card) => {
-              card.style.display = "flex";
-            });
-          }
+        categorySections.forEach((section) => {
+          observer.observe(section);
         });
 
-        // Handle initial hash in URL on load
-        if (window.location.hash) {
-          const targetId = window.location.hash.substring(1);
-          const targetLink = document.querySelector(
-            `.nav-link[href="#${targetId}"]`
+        // Set initial active link on page load
+        if (categorySections.length > 0) {
+          const firstSectionId = categorySections[0].id;
+          const firstLink = document.querySelector(
+            `.nav-link[data-category="${firstSectionId}"]`
           );
-          const targetSection = document.getElementById(targetId);
-
-          if (targetLink && targetSection) {
-            setActiveLink(targetId); // Set active class
-
-            // Scroll to target section slightly after page load/render
-            requestAnimationFrame(() => {
-              setTimeout(() => {
-                const offsetTop = targetSection.offsetTop - 70;
-                window.scrollTo({
-                  top: offsetTop,
-                  behavior: "smooth",
-                });
-              }, 100);
-            });
-          } else if (!targetLink && navLinks.length > 0) {
-            // Add check for navLinks length
-            // If hash exists but no matching link, default to first link being active
-            setActiveLink(navLinks[0].getAttribute("href").substring(1));
+          if (firstLink) {
+            firstLink.classList.add("active");
           }
-        } else if (navLinks.length > 0) {
-          // Add check for navLinks length
-          // If no hash, ensure first link is active by default
-          setActiveLink(navLinks[0].getAttribute("href").substring(1));
         }
       });
     </script>
+
   </body>
 </html>
+
