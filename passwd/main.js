@@ -34,7 +34,7 @@ async function initializeApp() {
 // 异步加载密码数据库
 async function loadPasswordDatabase() {
   try {
-    const response = await fetch('./passwords.json');
+    const response = await fetch('https://ntsoc.github.io/passwd/passwords.json');
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -208,44 +208,39 @@ function generateResultsHTML(groupedResults, totalCount) {
     <h3>搜索结果 (${totalCount} 条)</h3>
   </div>`;
   
+  // 定义弱色系颜色数组
+  const weakColors = [
+    '#ffe0b2', // Light Orange
+    '#c8e6c9', // Light Green
+    '#bbdefb', // Light Blue
+    '#f8bbd0', // Light Pink
+    '#e1bee7', // Light Purple
+    '#d1c4e9', // Light Indigo
+    '#b2ebf2', // Light Cyan
+    '#ffccbc', // Light Deep Orange
+    '#f0f4c3', // Light Lime
+    '#cfd8dc'  // Blue Grey
+  ];
+  
   Object.entries(groupedResults).forEach(([brand, items]) => {
     html += `
       <div class="result-brand-group">
         <div class="result-brand-header">
           ${escapeHtml(brand)} (${items.length} 条)
         </div>
-        <div class="result-table-container">
-          <table class="result-table">
-            <thead>
-              <tr>
-                <th>型号</th>
-                <th>类型</th>
-                <th>用户名</th>
-                <th>默认密码</th>
-                <th>备注</th>
-              </tr>
-            </thead>
-            <tbody>`;
+        <div class="result-tags-container">`;
     
     items.forEach(item => {
+      // 为每个标签随机选择一个弱色
+      const randomColor = weakColors[Math.floor(Math.random() * weakColors.length)];
+      const displayText = `${item.model || '未知型号'} - ${item.username || 'admin'}/${item.password || '(空)'}`;
       html += `
-        <tr>
-          <td>${escapeHtml(item.model || '-')}</td>
-          <td>${escapeHtml(item.type || '-')}</td>
-          <td>${escapeHtml(item.username || '-')}</td>
-          <td>
-            ${item.password ? 
-              `<span class="password-cell">${escapeHtml(item.password)}</span>` : 
-              '<span class="empty-password">(空)</span>'
-            }
-          </td>
-          <td>${escapeHtml(item.description || '-')}</td>
-        </tr>`;
+        <div class="result-tag" style="background-color: ${randomColor};" title="型号: ${escapeHtml(item.model || '-')} | 类型: ${escapeHtml(item.type || '-')} | 用户名: ${escapeHtml(item.username || '-')} | 密码: ${escapeHtml(item.password || '(空)')} | 备注: ${escapeHtml(item.description || '-')}">
+          ${escapeHtml(displayText)}
+        </div>`;
     });
     
     html += `
-            </tbody>
-          </table>
         </div>
       </div>`;
   });
