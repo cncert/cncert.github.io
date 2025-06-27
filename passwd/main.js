@@ -34,7 +34,7 @@ async function initializeApp() {
 // 异步加载密码数据库
 async function loadPasswordDatabase() {
   try {
-    const response = await fetch('https://ntsoc.github.io/passwd/passwords.json');
+    const response = await fetch('./passwords.json');
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
