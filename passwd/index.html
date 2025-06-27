@@ -1,27 +1,143 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="默认密码查询系统 - 快速查询各种设备的默认用户名和密码">
+  <meta name="keywords" content="默认密码,路由器密码,设备密码,网络设备">
   <title>默认密码查询系统</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <main>
-    <section class="search-card">
-      <h1>默认密码查询</h1>
-      <div class="search-bar">
-        <input id="searchInput" type="text" placeholder="请输入品牌、型号或用途关键词…" autofocus>
-        <button onclick="doSearch()" title="查询">
-          <span class="icon-search">&#128269;</span>
-        </button>
+  <!-- 加载状态指示器 -->
+  <div id="loadingIndicator" class="loading-indicator" aria-hidden="true">
+    <div class="loading-spinner"></div>
+    <span>正在加载数据...</span>
+  </div>
+
+  <header class="header">
+    <nav class="nav-container">
+      <div class="logo">
+        <span class="logo-icon">🔐</span>
+        <span class="logo-text">密码查询</span>
       </div>
-      <div id="result"></div>
-      <footer>
-        <small>数据仅供参考，请及时修改默认密码以保障安全。</small>
-      </footer>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">关于</a>
+        <a href="#help" class="nav-link">帮助</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="title-highlight">默认密码</span>查询系统
+        </h1>
+        <p class="hero-subtitle">快速查询各种网络设备、路由器、交换机的默认用户名和密码</p>
+      </div>
+    </section>
+
+    <section class="search-section" role="search">
+      <div class="search-container">
+        <div class="search-card">
+          <div class="search-header">
+            <h2 class="search-title">开始查询</h2>
+            <p class="search-description">输入品牌、型号或设备类型进行搜索</p>
+          </div>
+          
+          <form class="search-form" role="search" onsubmit="return false;">
+            <div class="search-input-group">
+              <label for="searchInput" class="sr-only">搜索关键词</label>
+              <input 
+                id="searchInput" 
+                type="text" 
+                class="search-input"
+                placeholder="例如：TP-Link、WR841N、路由器..." 
+                autocomplete="off"
+                autofocus
+                aria-describedby="search-help"
+              >
+              <button 
+                type="button" 
+                class="search-button" 
+                onclick="doSearch()" 
+                aria-label="开始搜索"
+              >
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="search-button-text">搜索</span>
+              </button>
+            </div>
+            <div id="search-help" class="search-help">
+              支持模糊搜索，可输入品牌名、型号或设备类型
+            </div>
+          </form>
+
+          <!-- 搜索建议 -->
+          <div class="search-suggestions">
+            <span class="suggestions-label">热门搜索：</span>
+            <button class="suggestion-tag" onclick="searchSuggestion('TP-Link')">TP-Link</button>
+            <button class="suggestion-tag" onclick="searchSuggestion('华为')">华为</button>
+            <button class="suggestion-tag" onclick="searchSuggestion('路由器')">路由器</button>
+            <button class="suggestion-tag" onclick="searchSuggestion('交换机')">交换机</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results-section">
+      <div class="results-container">
+        <div id="searchResults" class="search-results" role="region" aria-live="polite" aria-label="搜索结果">
+          <!-- 搜索结果将在这里显示 -->
+        </div>
+      </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 class="footer-title">安全提醒</h3>
+        <p class="footer-text">
+          本系统提供的密码信息仅供参考，强烈建议在使用设备时立即修改默认密码，
+          设置复杂且唯一的密码以保障网络安全。
+        </p>
+      </div>
+      
+      <div class="footer-section" id="about">
+        <h3 class="footer-title">关于项目</h3>
+        <p class="footer-text">
+          这是一个开源的默认密码查询工具，旨在帮助网络管理员和技术人员快速查找设备的默认登录信息。
+          数据来源于公开资料，如有错误请及时反馈。
+        </p>
+      </div>
+
+      <div class="footer-section" id="help">
+        <h3 class="footer-title">使用帮助</h3>
+        <ul class="footer-list">
+          <li>支持按品牌名搜索，如"TP-Link"、"华为"</li>
+          <li>支持按型号搜索，如"WR841N"、"AR2220"</li>
+          <li>支持按设备类型搜索，如"路由器"、"交换机"</li>
+          <li>搜索不区分大小写，支持模糊匹配</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 默认密码查询系统. 开源项目，仅供学习参考使用。</p>
+      <p class="copyright-info">
+        <a href="https://ntsoc.github.io" target="_blank" rel="noopener noreferrer">ntsoc.github.io</a>
+      </p>
+    </div>
+  </footer>
+
   <script src="main.js"></script>
 </body>
 </html>
+
