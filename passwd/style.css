@@ -327,7 +327,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  background: linear-gradient(135deg, #4aafbf, var(--primary-700));
   color: white;
   border: none;
   border-radius: var(--border-radius-lg);
