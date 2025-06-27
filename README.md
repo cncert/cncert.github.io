@@ -1,1 +1,1 @@
-**欢迎访问aptsoc.github.io**
+**欢迎访问Ntsoc.github.io**
