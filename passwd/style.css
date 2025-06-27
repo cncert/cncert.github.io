@@ -339,7 +339,7 @@ body {
 }
 
 .search-button:hover {
-  background: linear-gradient(135deg, var(--primary-700), var(--primary-800));
+  background: linear-gradient(135deg, #7bd81d, var(--primary-800));
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
 }
