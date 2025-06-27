@@ -255,14 +255,9 @@ function showWelcomeMessage() {
       <div class="welcome-icon">🔍</div>
       <h3 class="welcome-title">欢迎使用默认密码查询系统</h3>
       <p class="welcome-description">
-        输入设备品牌、型号或类型开始搜索。支持模糊匹配，例如：
+        输入设备品牌、型号或类型开始搜索支持模糊匹配。
       </p>
-      <div class="welcome-examples">
-        <span class="example-tag">TP-Link</span>
-        <span class="example-tag">WR841N</span>
-        <span class="example-tag">路由器</span>
-        <span class="example-tag">华为</span>
-      </div>
+ 
       <p class="welcome-note">
         💡 提示：搜索不区分大小写，支持多个关键词组合搜索
       </p>
