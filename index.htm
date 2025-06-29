@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SecNAV - 网址导航</title>
+    <title>DarkBlack - Nav</title>
     <!-- Font Awesome CDN -->
     <link
       rel="stylesheet"
@@ -190,6 +190,7 @@
         height: 200px;
         overflow: hidden;
         position: relative;
+        background: linear-gradient(135deg, #20c2f461, #372784);
       }
 
       .banner-image {
@@ -323,7 +324,7 @@
       .category-title {
         font-size: 1.5rem;
         font-weight: 600;
-        color: #000;
+        color: var(--text-color);
         margin: 0;
         display: flex;
         align-items: center;
@@ -395,6 +396,17 @@
         flex-shrink: 0;
       }
 
+      .link-icon img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+      }
+
+      .link-icon .fallback-icon {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+      }
+
       .link-title {
         font-size: 1rem;
         font-weight: 600;
@@ -414,6 +426,16 @@
         overflow: hidden;
       }
 
+      .category-badge {
+        font-size: 0.75rem;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 12px;
+        margin-top: 0.5rem;
+        display: inline-block;
+      }
+
       .link-card a {
         position: absolute;
         top: 0;
@@ -422,6 +444,48 @@
         height: 100%;
         z-index: 10;
         text-decoration: none;
+      }
+
+      /* Search Results */
+      .search-results {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 1000;
+      }
+
+      .search-result-item {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .search-result-item:hover {
+        background-color: var(--card-hover);
+      }
+
+      .search-result-item:last-child {
+        border-bottom: none;
+      }
+
+      .search-result-title {
+        font-weight: 600;
+        color: var(--text-color);
+        margin-bottom: 0.25rem;
+      }
+
+      .search-result-category {
+        font-size: 0.8rem;
+        color: var(--text-muted);
       }
 
       /* Scrollbar styling */
@@ -513,56 +577,50 @@
         <div class="sidebar-header">
           <a href="#" class="sidebar-logo">
             <i class="fas fa-layer-group"></i>
-            SecNAV
+            DarkBlack
           </a>
         </div>
         <nav class="sidebar-nav">
           <div class="nav-item">
-            <a href="#threat-intel" class="nav-link" data-category="threat-intel">
-              <i class="fas fa-shield-alt"></i>
+            <a href="#Threat-Intelligence" class="nav-link active" data-category="Threat-Intelligence">
+              <i class="fa-solid fa-circle-radiation"></i>
               威胁情报
             </a>
           </div>
           <div class="nav-item">
-            <a href="#asset-mapping" class="nav-link" data-category="asset-mapping">
-              <i class="fas fa-map"></i>
+            <a href="#Mapping" class="nav-link" data-category="Mapping">
+              <i class="fa-solid fa-map"></i>
               资测测绘
             </a>
           </div>
           <div class="nav-item">
-            <a href="#info-gathering" class="nav-link" data-category="info-gathering">
-              <i class="fas fa-search"></i>
+            <a href="#GatherInfo" class="nav-link" data-category="GatherInfo">
+              <i class="fa-solid fa-sitemap"></i>
               信息收集
             </a>
           </div>
           <div class="nav-item">
-            <a href="#vuln-platforms" class="nav-link" data-category="vuln-platforms">
-              <i class="fas fa-bug"></i>
+            <a href="#Vulnerability" class="nav-link" data-category="Vulnerability">
+              <i class="fa-solid fa-bugs"></i>
               漏洞平台
             </a>
           </div>
           <div class="nav-item">
-            <a href="#hacker-community" class="nav-link" data-category="hacker-community">
-              <i class="fas fa-users"></i>
+            <a href="#hackers" class="nav-link" data-category="hackers">
+              <i class="fa-solid fa-users"></i>
               黑客社区
             </a>
           </div>
           <div class="nav-item">
-            <a href="#ransomware-emergency" class="nav-link" data-category="ransomware-emergency">
-              <i class="fas fa-ambulance"></i>
+            <a href="#Emergency" class="nav-link" data-category="Emergency">
+              <i class="fa-solid fa-shield-virus"></i>
               勒索应急
             </a>
           </div>
           <div class="nav-item">
-            <a href="#ai-models" class="nav-link" data-category="ai-models">
-              <i class="fas fa-robot"></i>
+            <a href="#Large-Models" class="nav-link" data-category="Large-Models">
+              <i class="fa-solid fa-robot"></i>
               AI大模型
-            </a>
-          </div>
-            <div class="nav-item">
-            <a href="#nav-mine" class="nav-link" data-category="ai-models">
-              <i class="fa-solid fa-heart"></i>
-              我的网站
             </a>
           </div>
         </nav>
@@ -584,7 +642,8 @@
             
             <div class="search-container">
               <i class="fas fa-search search-icon"></i>
-              <input type="text" class="search-input" placeholder="请输入关键字，按回车 / Enter 搜索">
+              <input type="text" class="search-input" placeholder="站内搜索..." id="searchInput">
+              <div class="search-results" id="searchResults"></div>
             </div>
             
             <div class="header-actions">
@@ -595,11 +654,11 @@
 
         <!-- Content -->
         <main class="content">
-          <!-- 威胁情报 -->
-          <section class="category-section" id="threat-intel">
+          <!-- 威胁情报开始 -->
+          <section class="category-section" id="Threat-Intelligence">
             <div class="category-header">
               <h2 class="category-title">
-                <i class="fas fa-shield-alt"></i>
+                <i class="fa-solid fa-circle-radiation"></i>
                 威胁情报
               </h2>
             </div>
@@ -607,232 +666,281 @@
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-search"></i>
+                    <img src="https://x.threatbook.com/public/asset/img/favicon.ico?t=1" alt="Threatbook" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">微步在线情报社区</h3>
+                  <h3 class="link-title">微步在线X情报社区</h3>
                 </div>
                 <p class="link-description">威胁情报查询和分析平台，提供恶意文件、IP、域名等威胁情报信息</p>
-                <a href="https://x.threatbook.cn/" target="_blank"></a>
+                <span class="category-badge">Threatbook</span>
+                <a href="https://x.threatbook.com/" target="_blank"></a>
               </div>
               
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-shield-alt"></i>
+                    <img src="https://ti.qianxin.com/microapps/home-ti/logo/zh.svg" alt="Qianxin" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">奇安信威胁情报中心</h3>
+                  <h3 class="link-title">奇安信威胁情报</h3>
                 </div>
                 <p class="link-description">奇安信威胁情报中心，提供最新的网络安全威胁情报和分析报告</p>
-                <a href="https://ti.qianxin.com/" target="_blank"></a>
+                <span class="category-badge">Qianxin</span>
+                <a href="https://ti.qianxin.com/v2/search?type=ip&value=" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-globe"></i>
+                    <img src="https://p5.ssl.qhimg.com/t11b673bcd6a5e10e97f8fb19f2.png" alt="360安全大脑" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
                   <h3 class="link-title">360政企安全集团</h3>
                 </div>
                 <p class="link-description">360政企安全集团威胁情报平台，提供全面的网络安全威胁情报服务</p>
-                <a href="https://ti.360.net/" target="_blank"></a>
+                <span class="category-badge">360</span>
+                <a href="https://ti.360.com/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-star"></i>
+                    <img src="https://ti.nsfocus.com/favicon.ico" alt="NTI威胁情报中心" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
                   <h3 class="link-title">NTI威胁情报中心</h3>
                 </div>
                 <p class="link-description">绿盟科技威胁情报中心，提供专业的网络威胁情报分析和预警服务</p>
-                <a href="https://nti.nsfocus.com/" target="_blank"></a>
+                <span class="category-badge">绿盟科技</span>
+                <a href="https://ti.nsfocus.com/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-eye"></i>
+                    <img src="https://tix.qq.com/favicon.ico" alt="腾讯威胁情报中心" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">VirusTotal</h3>
+                  <h3 class="link-title">腾讯威胁情报中心</h3>
                 </div>
-                <p class="link-description">在线恶意软件扫描服务，支持文件、URL、IP地址和域名检测</p>
-                <a href="https://www.virustotal.com/" target="_blank"></a>
+                <p class="link-description">腾讯安全威胁情报中心，提供威胁情报查询和分析服务</p>
+                <span class="category-badge">腾讯安全</span>
+                <a href="https://tix.qq.com/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-database"></i>
-                  </div>
-                  <h3 class="link-title">IBM X-Force Exchange</h3>
-                </div>
-                <p class="link-description">IBM威胁情报共享平台，提供全球威胁情报数据和分析</p>
-                <a href="https://exchange.xforce.ibmcloud.com/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-cloud"></i>
+                    <img src="https://ti.dbappsecurity.com.cn/favicon.png" alt="安全星图平台" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
                   <h3 class="link-title">安全星图平台</h3>
                 </div>
                 <p class="link-description">安恒信息，专注于网络信息安全领域，提供全面的安全产品、服务和解决方案</p>
+                <span class="category-badge">安恒信息</span>
                 <a href="https://ti.dbappsecurity.com.cn/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-fire"></i>
+                    <img src="https://redqueen.tj-un.com/favicon.png" alt="RedQueen威胁情报中心" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">天际友盟威胁情报中心</h3>
+                  <h3 class="link-title">RedQueen威胁情报中心</h3>
                 </div>
                 <p class="link-description">天际友盟TI Inside 生态协同模式是专业威胁情报厂商与专业安全产品厂商合作的最佳实践</p>
-                <a href="https://redqueen.tj-un.com/home/index" target="_blank"></a>
+                <span class="category-badge">天际友盟</span>
+                <a href="https://redqueen.tj-un.com/IntelHome.html" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-lock"></i>
+                    <img src="https://exchange.xforce.ibmcloud.com/images/shortcut-icons/apple-icon-180x180.png" alt="IBM X-Force Exchange" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">大圣沙箱</h3>
+                  <h3 class="link-title">IBM X-Force Exchange</h3>
                 </div>
-                <p class="link-description">FreeBuf云沙箱检测系统</p>
+                <p class="link-description">IBM威胁情报共享平台，提供全球威胁情报数据和分析</p>
+                <span class="category-badge">IBM Security</span>
+                <a href="https://exchange.xforce.ibmcloud.com/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://www.virustotal.com/gui/images/manifest/icon-192x192.png" alt="Virustotal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">Virustotal</h3>
+                </div>
+                <p class="link-description">在线恶意软件扫描服务，支持文件、URL、IP地址和域名检测</p>
+                <span class="category-badge">Virustotal</span>
+                <a href="https://www.virustotal.com/gui/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://habo.qq.com/favicon.ico" alt="哈勃分析系统" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">哈勃分析系统</h3>
+                </div>
+                <p class="link-description">腾讯安全提供的恶意软件分析平台，支持勒索病毒检测和分析</p>
+                <span class="category-badge">腾讯安全</span>
+                <a href="https://habo.qq.com/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://sandbox.freebuf.com/favicon.ico" alt="大圣云沙箱检测系统" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">大圣云沙箱检测系统</h3>
+                </div>
+                <p class="link-description">FreeBuf云沙箱检测系统，提供恶意软件分析服务</p>
+                <span class="category-badge">斗象科技</span>
                 <a href="https://sandbox.freebuf.com/detect" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-user-secret"></i>
+                    <img src="https://www.hybrid-analysis.com/favicon.ico" alt="Hybrid Analysis" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
                   <h3 class="link-title">Hybrid Analysis</h3>
                 </div>
-                <p class="link-description"> Hybrid Analysis </p>
-                <a href="https://hybrid-analysis.com/" target="_blank"></a>
+                <p class="link-description">免费的恶意软件分析服务，提供详细的分析报告</p>
+                <span class="category-badge">Hybrid Analysis</span>
+                <a href="https://www.hybrid-analysis.com/" target="_blank"></a>
               </div>
-              
-               <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fa-brands fa-qq"></i>
-                  </div>
-                  <h3 class="link-title">腾讯安全</h3>
-                </div>
-                <p class="link-description">腾讯安全威胁情报中心</p>
-                <a href="https://tix.qq.com/" target="_blank"></a>
-              </div>
-              
             </div>
           </section>
 
-          <!-- 资测测绘 -->
-          <section class="category-section" id="asset-mapping">
+          <!-- 资产测绘开始 -->
+          <section class="category-section" id="Mapping">
             <div class="category-header">
               <h2 class="category-title">
-                <i class="fas fa-map"></i>
-                资测测绘
+                <i class="fa-solid fa-map"></i>
+                资产测绘
               </h2>
             </div>
             <div class="link-grid">
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-globe-americas"></i>
+                    <img src="https://fofa.info/favicon.ico" alt="FOFA" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">FOFA</h3>
+                  <h3 class="link-title">FOFA网络空间测绘</h3>
                 </div>
                 <p class="link-description">网络空间安全搜索引擎，快速查找全球互联网资产</p>
+                <span class="category-badge">华顺信安</span>
                 <a href="https://fofa.info/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-server"></i>
+                    <img src="https://www.qianxin.com/favicon.ico" alt="Hunter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">Shodan</h3>
-                </div>
-                <p class="link-description">全球首个互联网连接设备的搜索引擎，可以查找各种联网设备</p>
-                <a href="https://www.shodan.io/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-network-wired"></i>
-                  </div>
-                  <h3 class="link-title">ZoomEye</h3>
-                </div>
-                <p class="link-description">网络空间搜索引擎，提供设备指纹和组件指纹搜索</p>
-                <a href="https://www.zoomeye.org/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-fingerprint"></i>
-                  </div>
-                  <h3 class="link-title">Hunter</h3>
+                  <h3 class="link-title">Hunter鹰图</h3>
                 </div>
                 <p class="link-description">网络资产测绘平台，提供资产识别、漏洞发现、风险评估等服务</p>
+                <span class="category-badge">Qianxin</span>
                 <a href="https://hunter.qianxin.com/" target="_blank"></a>
               </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-sitemap"></i>
-                  </div>
-                  <h3 class="link-title">0.zone</h3>
-                </div>
-                <p class="link-description">网络空间测绘平台，提供资产发现、漏洞扫描、风险监测等服务</p>
-                <a href="https://0.zone/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                  </div>
-                  <h3 class="link-title">ThreatBook TI</h3>
-                </div>
-                <p class="link-description">微步在线威胁情报平台，提供IP、域名、文件等威胁情报查询</p>
-                <a href="https://ti.threatbook.cn/" target="_blank"></a>
-              </div>
 
-                <div class="link-card">
+              <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fa-solid fa-mask"></i>
+                    <img src="https://quake.360.net/quake/static/index/favicon.ico" alt="Quake" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">360网络空间测绘</h3>
+                  <h3 class="link-title">360安全大脑网络空间测绘</h3>
                 </div>
                 <p class="link-description">360网络空间测绘 — 因为看见，所以安全</p>
-                <a href="https://quake.360.net/quake/#" target="_blank"></a>
+                <span class="category-badge">360</span>
+                <a href="https://quake.360.net/quake/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <img src="https://x.threatbook.com/public/asset/img/favicon.ico?t=1" alt="资产测绘" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">微步X情报社区</h3>
+                </div>
+                <p class="link-description">微步在线威胁情报平台，提供IP、域名、文件等威胁情报查询</p>
+                <span class="category-badge">Threatbook</span>
+                <a href="https://x.threatbook.com/v5/mapping" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://www.zoomeye.hk/static/public/favicon.ico" alt="zoomeye" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">知道创宇网络空间雷达</h3>
+                </div>
+                <p class="link-description">网络空间测绘平台，提供资产发现、漏洞扫描、风险监测等服务</p>
+                <span class="category-badge">Zoomeye</span>
+                <a href="https://www.zoomeye.org/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://0.zone/favicon.png" alt="0.Zone" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">0.zone攻击面管理系统</h3>
+                </div>
+                <p class="link-description">零零信安攻击面管理系统，提供全面的网络资产发现和管理</p>
+                <span class="category-badge">零零信安</span>
+                <a href="https://0.zone/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://www.shodan.io/static/img/apple-touch-icon-192-4eb04af5.png" alt="Shodan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">Shodan Search Engine</h3>
+                </div>
+                <p class="link-description">全球首个互联网连接设备的搜索引擎，可以查找各种联网设备</p>
+                <span class="category-badge">Shodan</span>
+                <a href="https://www.shodan.io/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://cdn.craft.cloud/c8021849-16e4-4625-8a76-b4f9958b5e89/builds/9ead009a-dac0-45f8-9c98-1d0860c411d0/artifacts/dist/favicon.ico" alt="Censys" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
                   <h3 class="link-title">Censys Search</h3>
                 </div>
-                <p class="link-description">Censys Search</p>
+                <p class="link-description">网络空间搜索引擎，提供设备指纹和组件指纹搜索</p>
+                <span class="category-badge">Censys</span>
                 <a href="https://search.censys.io/" target="_blank"></a>
               </div>
-                            
             </div>
           </section>
 
-          <!-- 信息收集 -->
-          <section class="category-section" id="info-gathering">
+          <!-- 信息收集开始 -->
+          <section class="category-section" id="GatherInfo">
             <div class="category-header">
               <h2 class="category-title">
-                <i class="fas fa-search"></i>
+                <i class="fa-solid fa-sitemap"></i>
                 信息收集
               </h2>
             </div>
@@ -840,76 +948,140 @@
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-globe"></i>
+                    <img src="https://www.tianyancha.com/favicon.ico" alt="天眼查" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">Whois查询</h3>
+                  <h3 class="link-title">查公司,查老板,查关系...</h3>
                 </div>
-                <p class="link-description">域名Whois信息查询，了解域名注册信息</p>
-                <a href="https://whois.aliyun.com/" target="_blank"></a>
+                <p class="link-description">企业信息查询平台，提供公司工商信息、股权结构等数据</p>
+                <span class="category-badge">天眼查</span>
+                <a href="https://www.tianyancha.com/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-cloud"></i>
+                    <img src="https://csstools.chinaz.com/favicon.ico" alt="超级Ping" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">DNS查询</h3>
+                  <h3 class="link-title">超级Ping</h3>
                 </div>
-                <p class="link-description">DNS信息查询，了解域名解析情况</p>
-                <a href="https://dns.aizhan.com/" target="_blank"></a>
+                <p class="link-description">网络连通性测试工具，支持全球多节点Ping测试</p>
+                <span class="category-badge">Chinaz站长工具</span>
+                <a href="https://ping.chinaz.com/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-code-branch"></i>
+                    <img src="https://site.ip138.com/favicon.ico" alt="Ip138查询" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">GitHub</h3>
+                  <h3 class="link-title">iP反查网站 同一iP网站</h3>
+                </div>
+                <p class="link-description">IP地址查询工具，支持IP反查域名和同IP网站查询</p>
+                <span class="category-badge">Ip138</span>
+                <a href="https://site.ip138.com/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://www.ipuu.net/favicon.ico" alt="IP定位查询" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">IP定位查询</h3>
+                </div>
+                <p class="link-description">IP地理位置查询工具，提供精确的IP定位信息</p>
+                <span class="category-badge">埃文科技</span>
+                <a href="https://www.ipuu.net/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/web-check.ico" alt="Web Check" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">网址综合信息查询</h3>
+                </div>
+                <p class="link-description">网站综合信息查询工具，提供域名、SSL、DNS等详细信息</p>
+                <span class="category-badge">Web Check</span>
+                <a href="https://web-check.xyz/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://grep.app/icon.png?27d38f126102b607" alt="grep.app" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">全网代码搜索</h3>
                 </div>
                 <p class="link-description">全球最大的代码托管平台，发现开源项目和代码</p>
-                <a href="https://github.com/" target="_blank"></a>
+                <span class="category-badge">grep.app</span>
+                <a href="https://grep.app/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-book"></i>
+                    <img src="https://centralops.net/favicon.ico" alt="Whois查询" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">Exploit-DB</h3>
+                  <h3 class="link-title">Free online network tools</h3>
                 </div>
-                <p class="link-description">漏洞利用数据库，提供各种漏洞的利用代码和信息</p>
-                <a href="https://www.exploit-db.com/" target="_blank"></a>
+                <p class="link-description">域名Whois信息查询，了解域名注册信息</p>
+                <span class="category-badge">CentralOps</span>
+                <a href="https://centralops.net/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-file-alt"></i>
+                    <img src="https://dnsdumpster.com/favicon.ico" alt="DNS解析查询" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">CVE Details</h3>
+                  <h3 class="link-title">DNS解析查询</h3>
                 </div>
-                <p class="link-description">CVE漏洞详情查询，了解各种漏洞的详细信息</p>
-                <a href="https://www.cvedetails.com/" target="_blank"></a>
+                <p class="link-description">DNS信息查询，了解域名解析情况</p>
+                <span class="category-badge">DNSDumpster</span>
+                <a href="https://dnsdumpster.com/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-newspaper"></i>
+                    <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/mogua.ico" alt="摸瓜" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">安全客</h3>
+                  <h3 class="link-title">APK反编译,APK反编译工具</h3>
                 </div>
-                <p class="link-description">安全技术分享平台，提供最新的安全资讯和技术文章</p>
-                <a href="https://www.anquanke.com/" target="_blank"></a>
+                <p class="link-description">Android APK反编译工具，支持在线APK分析</p>
+                <span class="category-badge">摸瓜</span>
+                <a href="https://www.mogua.co/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://sec.lintstar.top/static/favicon.ico" alt="sec.lintstar.top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">凌星阁红队作战平台</h3>
+                </div>
+                <p class="link-description">红队作战平台，提供渗透测试工具和资源</p>
+                <span class="category-badge">sec.lintstar.top</span>
+                <a href="https://sec.lintstar.top/" target="_blank"></a>
               </div>
             </div>
           </section>
 
-          <!-- 漏洞平台 -->
-          <section class="category-section" id="vuln-platforms">
+          <!-- 漏洞平台开始 -->
+          <section class="category-section" id="Vulnerability">
             <div class="category-header">
               <h2 class="category-title">
-                <i class="fas fa-bug"></i>
+                <i class="fa-solid fa-bugs"></i>
                 漏洞平台
               </h2>
             </div>
@@ -917,76 +1089,88 @@
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-shield-alt"></i>
+                    <img src="https://www.cnnvd.org.cn/favicon.ico" alt="CNNVD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">补天漏洞响应平台</h3>
-                </div>
-                <p class="link-description">国内知名的漏洞响应平台，连接白帽子与企业，提供漏洞挖掘和修复服务</p>
-                <a href="https://www.butian.net/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-bug"></i>
-                  </div>
-                  <h3 class="link-title">漏洞盒子</h3>
-                </div>
-                <p class="link-description">专业的安全众测平台，提供漏洞挖掘、安全测试等服务</p>
-                <a href="https://www.vulbox.com/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-search"></i>
-                  </div>
-                  <h3 class="link-title">CNVD</h3>
+                  <h3 class="link-title">国家信息安全漏洞库</h3>
                 </div>
                 <p class="link-description">国家信息安全漏洞共享平台，提供漏洞信息收集、分析和发布</p>
-                <a href="https://www.cnvd.org.cn/" target="_blank"></a>
+                <span class="category-badge">CNNVD</span>
+                <a href="https://www.cnnvd.org.cn/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-database"></i>
+                    <img src="https://cve.mitre.org/favicon.ico" alt="CVE漏洞库" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">CNNVD</h3>
-                </div>
-                <p class="link-description">国家信息安全漏洞库，提供漏洞信息查询和安全公告</p>
-                <a href="http://www.cnnvd.org.cn/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-globe"></i>
-                  </div>
-                  <h3 class="link-title">CVE</h3>
+                  <h3 class="link-title">CVE漏洞库</h3>
                 </div>
                 <p class="link-description">通用漏洞披露数据库，全球标准的漏洞编号系统</p>
+                <span class="category-badge">CVE</span>
                 <a href="https://cve.mitre.org/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-star"></i>
+                    <img src="https://www.exploit-db.com/favicon.ico" alt="Exploit Database" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">HackerOne</h3>
+                  <h3 class="link-title">Exploit Database</h3>
                 </div>
-                <p class="link-description">全球领先的漏洞赏金平台，连接企业与安全研究人员</p>
-                <a href="https://hackerone.com/" target="_blank"></a>
+                <p class="link-description">漏洞利用数据库，提供各种漏洞的利用代码和信息</p>
+                <span class="category-badge">OffSec</span>
+                <a href="https://www.exploit-db.com/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/0day.ico" alt="0day.today" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">漏洞利用市场</h3>
+                </div>
+                <p class="link-description">0day漏洞利用代码分享平台</p>
+                <span class="category-badge">0day.today</span>
+                <a href="https://cn.0day.today/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://avd.aliyun.com/static/favicon.ico" alt="阿里云漏洞库" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">阿里云漏洞库</h3>
+                </div>
+                <p class="link-description">阿里云安全先知社区，安全技术分享与交流平台</p>
+                <span class="category-badge">Alibaba Cloud Security Team</span>
+                <a href="https://avd.aliyun.com/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://www.nsfocus.net/favicon.ico" alt="绿盟漏洞库" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">NSFOCUS绿盟科技</h3>
+                </div>
+                <p class="link-description">绿盟科技安全漏洞库，提供专业的漏洞信息和安全公告</p>
+                <span class="category-badge">Nsfocus</span>
+                <a href="https://www.nsfocus.net/index.php?act=sec_bug" target="_blank"></a>
               </div>
             </div>
           </section>
 
-          <!-- 黑客社区 -->
-          <section class="category-section" id="hacker-community">
+          <!-- 黑客社区开始 -->
+          <section class="category-section" id="hackers">
             <div class="category-header">
               <h2 class="category-title">
-                <i class="fas fa-users"></i>
+                <i class="fa-solid fa-users"></i>
                 黑客社区
               </h2>
             </div>
@@ -994,76 +1178,100 @@
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-comments"></i>
+                    <img src="https://vx-underground.org/favicon.ico" alt="vx-underground" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">安全代码存储库</h3>
+                </div>
+                <p class="link-description">专业的逆向工程和软件安全技术学习平台</p>
+                <span class="category-badge">vx-underground</span>
+                <a href="https://vx-underground.org/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <i class="fa-solid fa-user-secret fallback-icon"></i>
+                  </div>
+                  <h3 class="link-title">暗网中文论坛</h3>
+                </div>
+                <p class="link-description">网络安全在线教育平台，提供安全技能培训和实战演练</p>
+                <span class="category-badge">暗网</span>
+                <a href="http://xxxxxxxxxs6qbnahsbvxbghsnqh4rj6whbyblqtnmetf7vell2fmxmad.onion/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/unknownw.png" alt="unknownw" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">unknownw社区</h3>
+                </div>
+                <p class="link-description">国内知名的网络安全行业门户，提供安全资讯、技术文章和工具</p>
+                <span class="category-badge">unknownw</span>
+                <a href="https://unknownw.com/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/BreachForums.png" alt="BreachForums" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">breachforums</h3>
+                </div>
+                <p class="link-description">低调求发展的安全技术社区，专注于安全技术交流</p>
+                <span class="category-badge">breachforums</span>
+                <a href="https://breached.fi/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://forum.butian.net/ico.png" alt="奇安信攻防社区" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">奇安信攻防社区</h3>
+                </div>
+                <p class="link-description">奇安信攻防社区，安全技术分享和交流平台</p>
+                <span class="category-badge">Qianxin</span>
+                <a href="https://forum.butian.net/community" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://www.t00ls.com/favicon.ico" alt="T00ls论坛" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">T00ls论坛</h3>
+                </div>
+                <p class="link-description">国内知名安全技术论坛，安全技术交流社区</p>
+                <span class="category-badge">T00ls</span>
+                <a href="https://www.t00ls.com/index.php" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://xz.aliyun.com/favicon.ico" alt="先知社区" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
                   <h3 class="link-title">先知社区</h3>
                 </div>
                 <p class="link-description">阿里云安全先知社区，安全技术分享与交流平台</p>
+                <span class="category-badge">Aliyun</span>
                 <a href="https://xz.aliyun.com/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-users"></i>
-                  </div>
-                  <h3 class="link-title">看雪学院</h3>
-                </div>
-                <p class="link-description">专业的逆向工程和软件安全技术学习平台</p>
-                <a href="https://www.kanxue.com/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                  </div>
-                  <h3 class="link-title">i春秋</h3>
-                </div>
-                <p class="link-description">网络安全在线教育平台，提供安全技能培训和实战演练</p>
-                <a href="https://www.ichunqiu.com/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-code"></i>
-                  </div>
-                  <h3 class="link-title">FreeBuf</h3>
-                </div>
-                <p class="link-description">国内知名的网络安全行业门户，提供安全资讯、技术文章和工具</p>
-                <a href="https://www.freebuf.com/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-terminal"></i>
-                  </div>
-                  <h3 class="link-title">T00ls</h3>
-                </div>
-                <p class="link-description">低调求发展的安全技术社区，专注于安全技术交流</p>
-                <a href="https://www.t00ls.net/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-flag"></i>
-                  </div>
-                  <h3 class="link-title">CTFHub</h3>
-                </div>
-                <p class="link-description">CTF竞赛平台，提供网络安全竞赛题目和训练环境</p>
-                <a href="https://www.ctfhub.com/" target="_blank"></a>
               </div>
             </div>
           </section>
 
-          <!-- 勒索应急 -->
-          <section class="category-section" id="ransomware-emergency">
+          <!-- 勒索应急开始 -->
+          <section class="category-section" id="Emergency">
             <div class="category-header">
               <h2 class="category-title">
-                <i class="fas fa-ambulance"></i>
+                <i class="fa-solid fa-shield-virus"></i>
                 勒索应急
               </h2>
             </div>
@@ -1071,76 +1279,114 @@
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-shield-alt"></i>
+                    <img src="https://www.nomoreransom.org/assets/icons/icon-512x512.png" alt="勒索解密查询" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">360勒索病毒搜索引擎</h3>
+                  <h3 class="link-title">勒索解密查询</h3>
                 </div>
-                <p class="link-description">360提供的勒索病毒搜索和解密工具，帮助用户识别和解决勒索病毒问题</p>
-                <a href="https://lesuobingdu.360.cn/" target="_blank"></a>
+                <p class="link-description">国际反勒索病毒项目，提供免费解密工具和预防建议</p>
+                <span class="category-badge">nomoreransom.org</span>
+                <a href="https://www.nomoreransom.org/zh/decryption-tools.html" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-key"></i>
-                  </div>
-                  <h3 class="link-title">腾讯哈勃分析系统</h3>
-                </div>
-                <p class="link-description">腾讯安全提供的恶意软件分析平台，支持勒索病毒检测和分析</p>
-                <a href="https://habo.qq.com/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-unlock"></i>
-                  </div>
-                  <h3 class="link-title">卡巴斯基解密工具</h3>
-                </div>
-                <p class="link-description">卡巴斯基提供的免费勒索病毒解密工具集合</p>
-                <a href="https://noransom.kaspersky.com/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-tools"></i>
-                  </div>
-                  <h3 class="link-title">Emsisoft解密工具</h3>
-                </div>
-                <p class="link-description">Emsisoft提供的勒索病毒解密工具，支持多种勒索病毒家族</p>
-                <a href="https://www.emsisoft.com/ransomware-decryption-tools/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-database"></i>
+                    <img src="https://id-ransomware.malwarehunterteam.com/assets/images/favicons/favicon.ico" alt="ID Ransomware" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
                   <h3 class="link-title">ID Ransomware</h3>
                 </div>
                 <p class="link-description">勒索病毒识别工具，帮助用户识别感染的勒索病毒类型</p>
+                <span class="category-badge">MalwareHunterTeam</span>
                 <a href="https://id-ransomware.malwarehunterteam.com/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-life-ring"></i>
+                    <img src="https://noransom.kaspersky.com/content/themes/ransomware2/favicon.png" alt="免费勒索软件解密器" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">No More Ransom</h3>
+                  <h3 class="link-title">免费勒索软件解密器</h3>
                 </div>
-                <p class="link-description">国际反勒索病毒项目，提供免费解密工具和预防建议</p>
-                <a href="https://www.nomoreransom.org/" target="_blank"></a>
+                <p class="link-description">卡巴斯基提供的免费勒索病毒解密工具集合</p>
+                <span class="category-badge">卡巴斯基实验室</span>
+                <a href="https://noransom.kaspersky.com/zh/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://static3.avast.com/10003974/web/i/v2/components/logos/avast-logos/seo/apple-touch-icon.png?v=2" alt="免费勒索软件解密工具" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">免费勒索软件解密工具</h3>
+                </div>
+                <p class="link-description">Avast提供的免费勒索病毒解密工具</p>
+                <span class="category-badge">Avast</span>
+                <a href="https://www.avast.com/zh-cn/ransomware-decryption-tools#pc" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://www.360.cn/favicon.ico" alt="勒索病毒解密" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">360勒索病毒解密</h3>
+                </div>
+                <p class="link-description">360提供的勒索病毒搜索和解密工具，帮助用户识别和解决勒索病毒问题</p>
+                <span class="category-badge">360</span>
+                <a href="https://lesuobingdu.360.cn/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://lesuobingdu.qianxin.com/favicon.ico" alt="勒索病毒搜索引擎" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">勒索病毒搜索引擎</h3>
+                </div>
+                <p class="link-description">奇安信勒索病毒搜索引擎，提供勒索病毒识别和解密服务</p>
+                <span class="category-badge">Qianxin</span>
+                <a href="https://lesuobingdu.qianxin.com/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://lesuo.venuseye.com.cn/favicon.ico" alt="VenusEye勒索病毒搜索引擎" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">VenusEye勒索病毒搜索引擎</h3>
+                </div>
+                <p class="link-description">启明星辰VenusEye勒索病毒搜索引擎</p>
+                <span class="category-badge">启明星辰</span>
+                <a href="https://lesuo.venuseye.com.cn/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://guanjia.qq.com/favicon.ico" alt="勒索病毒搜索" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">腾讯勒索病毒搜索引擎</h3>
+                </div>
+                <p class="link-description">腾讯电脑管家勒索病毒搜索引擎</p>
+                <span class="category-badge">腾讯电脑管家</span>
+                <a href="https://guanjia.qq.com/pr/ls/" target="_blank"></a>
               </div>
             </div>
           </section>
 
-          <!-- AI大模型 -->
-          <section class="category-section" id="ai-models">
+          <!-- AI大模型开始 -->
+          <section class="category-section" id="Large-Models">
             <div class="category-header">
               <h2 class="category-title">
-                <i class="fas fa-robot"></i>
+                <i class="fa-solid fa-robot"></i>
                 AI大模型
               </h2>
             </div>
@@ -1148,269 +1394,381 @@
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-comments"></i>
+                    <img src="https://openai.com/icon.svg?d5c238c2cf2e4f08" alt="ChatGpt" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">ChatGPT</h3>
+                  <h3 class="link-title">Chatgpt</h3>
                 </div>
                 <p class="link-description">OpenAI开发的大型语言模型，提供智能对话和文本生成服务</p>
+                <span class="category-badge">Openai</span>
                 <a href="https://chat.openai.com/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-brain"></i>
+                    <img src="https://cdn.deepseek.com/chat/icon.png" alt="Deepseek" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">DeepSeek</h3>
+                  <h3 class="link-title">Deepseek</h3>
                 </div>
                 <p class="link-description">杭州深度求索人工智能基础技术研究有限公司</p>
-                <a href="https://chat.deepseek.com" target="_blank"></a>
+                <span class="category-badge">深度求索</span>
+                <a href="https://chat.deepseek.com/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-star"></i>
+                    <img src="https://img.alicdn.com/imgextra/i4/O1CN01EfJVFQ1uZPd7W4W6i_!!6000000006051-2-tps-112-112.png" alt="通义千问" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
                   <h3 class="link-title">通义千问</h3>
                 </div>
                 <p class="link-description">阿里云推出的大语言模型，提供智能问答和内容生成服务</p>
-                <a href="https://tongyi.aliyun.com/" target="_blank"></a>
+                <span class="category-badge">Aliyun</span>
+                <a href="https://tongyi.aliyun.com/qianwen/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-lightbulb"></i>
+                    <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Gemini" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">讯飞星火</h3>
+                  <h3 class="link-title">Gemini</h3>
                 </div>
-                <p class="link-description">科大讯飞推出的认知智能大模型，具备语言理解、知识问答、逻辑推理等能力</p>
-                <a href="https://xinghuo.xfyun.cn/" target="_blank"></a>
+                <p class="link-description">Google开发的多模态AI助手，具备强大的理解和生成能力</p>
+                <span class="category-badge">Google</span>
+                <a href="https://gemini.google.com/app" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-rocket"></i>
+                    <img src="https://statics.moonshot.cn/kimi-web-seo/assets/favicon-OXkYivQY.ico" alt="KiMi" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">智谱清言</h3>
+                  <h3 class="link-title">KiMi</h3>
                 </div>
-                <p class="link-description">智谱AI推出的对话式AI助手，基于GLM大模型技术</p>
-                <a href="https://chatglm.cn/" target="_blank"></a>
+                <p class="link-description">月之暗面开发的AI助手，支持长文本理解和生成</p>
+                <span class="category-badge">月之暗面</span>
+                <a href="https://kimi.moonshot.cn/" target="_blank"></a>
               </div>
-              
+
               <div class="link-card">
                 <div class="link-card-header">
                   <div class="link-icon">
-                    <i class="fas fa-magic"></i>
+                    <img src="https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/logo-doubao-overflow.png" alt="豆包" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
                   </div>
-                  <h3 class="link-title">Claude</h3>
+                  <h3 class="link-title">豆包</h3>
                 </div>
-                <p class="link-description">Anthropic开发的AI助手，具备强大的对话和分析能力</p>
-                <a href="https://claude.ai/" target="_blank"></a>
+                <p class="link-description">字节跳动推出的AI助手，提供智能对话和内容创作服务</p>
+                <span class="category-badge">字节跳动</span>
+                <a href="https://www.doubao.com/chat/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://raw.githubusercontent.com/darkgpt/note-gen-image-sync/refs/heads/main/Grok.png" alt="Grok" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">Grok</h3>
+                </div>
+                <p class="link-description">X(Twitter)开发的AI助手，具备实时信息获取能力</p>
+                <span class="category-badge">X</span>
+                <a href="https://grok.com/" target="_blank"></a>
+              </div>
+
+              <div class="link-card">
+                <div class="link-card-header">
+                  <div class="link-icon">
+                    <img src="https://studiostaticassetsprod.azureedge.net/bundle-cmc/favicon.svg" alt="Copilot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fa-solid fa-user-secret fallback-icon" style="display: none;"></i>
+                  </div>
+                  <h3 class="link-title">Copilot</h3>
+                </div>
+                <p class="link-description">微软必应AI助手，集成搜索和对话功能</p>
+                <span class="category-badge">微软必应</span>
+                <a href="https://copilot.microsoft.com" target="_blank"></a>
               </div>
             </div>
           </section>
-          
-          <!-- 我的网站 -->
-          <section class="category-section" id="nav-mine">
-            <div class="category-header">
-              <h2 class="category-title">
-                <i class="fas fa-robot"></i>
-                我的网站
-              </h2>
-            </div>
-            <div class="link-grid">
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fa-solid fa-key"></i>
-                  </div>
-                  <h3 class="link-title">默认密码</h3>
-                </div>
-                <p class="link-description">网络设备、安全设备、系统中间件框架等默认密码查询</p>
-                <a href="/passwd" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-brain"></i>
-                  </div>
-                  <h3 class="link-title">文心一言</h3>
-                </div>
-                <p class="link-description">百度推出的知识增强大语言模型，提供中文对话和内容创作</p>
-                <a href="https://yiyan.baidu.com/" target="_blank"></a>
-              </div>
-              
-              <div class="link-card">
-                <div class="link-card-header">
-                  <div class="link-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <h3 class="link-title">通义千问</h3>
-                </div>
-                <p class="link-description">阿里云推出的大语言模型，提供智能问答和内容生成服务</p>
-                <a href="https://tongyi.aliyun.com/" target="_blank"></a>
-              </div>
-              
-            </div>
-          </section>
-          
         </main>
 
         <!-- Footer -->
         <footer class="footer">
-          <p>&copy; 2025 大灰狼版权所有© Ntsoc.github.io </p>
+          <p>&copy; 2024-2025 NTSOC.github.io  大灰狼版权所有。</p>
         </footer>
       </div>
     </div>
 
     <!-- Floating Action Buttons -->
     <div class="floating-buttons">
-      <button class="back-to-top" id="backToTopFloating">
+      <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
-      </button>
-      <button class="theme-toggle" id="themeToggleFloating">
+      </div>
+      <div class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
-      </button>
+      </div>
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const sidebar = document.getElementById("sidebar");
-        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-        const backToTopFloatingButton = document.getElementById("backToTopFloating");
-        const themeToggleFloatingButton = document.getElementById("themeToggleFloating");
-        const searchInput = document.querySelector(".search-input");
-        const categoryLinks = document.querySelectorAll(".nav-link");
-        const categorySections = document.querySelectorAll(".category-section");
+      // Site data for search functionality
+      const siteData = [
+        // 威胁情报
+        { title: '微步在线X情报社区', category: '威胁情报', url: 'https://x.threatbook.com/', description: '威胁情报查询和分析平台，提供恶意文件、IP、域名等威胁情报信息' },
+        { title: '奇安信威胁情报', category: '威胁情报', url: 'https://ti.qianxin.com/v2/search?type=ip&value=', description: '奇安信威胁情报中心，提供最新的网络安全威胁情报和分析报告' },
+        { title: '360政企安全集团', category: '威胁情报', url: 'https://ti.360.com/', description: '360政企安全集团威胁情报平台，提供全面的网络安全威胁情报服务' },
+        { title: 'NTI威胁情报中心', category: '威胁情报', url: 'https://ti.nsfocus.com/', description: '绿盟科技威胁情报中心，提供专业的网络威胁情报分析和预警服务' },
+        { title: '腾讯威胁情报中心', category: '威胁情报', url: 'https://tix.qq.com/', description: '腾讯安全威胁情报中心，提供威胁情报查询和分析服务' },
+        { title: '安全星图平台', category: '威胁情报', url: 'https://ti.dbappsecurity.com.cn/', description: '安恒信息，专注于网络信息安全领域，提供全面的安全产品、服务和解决方案' },
+        { title: 'RedQueen威胁情报中心', category: '威胁情报', url: 'https://redqueen.tj-un.com/IntelHome.html', description: '天际友盟TI Inside 生态协同模式是专业威胁情报厂商与专业安全产品厂商合作的最佳实践' },
+        { title: 'IBM X-Force Exchange', category: '威胁情报', url: 'https://exchange.xforce.ibmcloud.com/', description: 'IBM威胁情报共享平台，提供全球威胁情报数据和分析' },
+        { title: 'Virustotal', category: '威胁情报', url: 'https://www.virustotal.com/gui/', description: '在线恶意软件扫描服务，支持文件、URL、IP地址和域名检测' },
+        { title: '哈勃分析系统', category: '威胁情报', url: 'https://habo.qq.com/', description: '腾讯安全提供的恶意软件分析平台，支持勒索病毒检测和分析' },
+        { title: '大圣云沙箱检测系统', category: '威胁情报', url: 'https://sandbox.freebuf.com/detect', description: 'FreeBuf云沙箱检测系统，提供恶意软件分析服务' },
+        { title: 'Hybrid Analysis', category: '威胁情报', url: 'https://www.hybrid-analysis.com/', description: '免费的恶意软件分析服务，提供详细的分析报告' },
+        
+        // 资产测绘
+        { title: 'FOFA网络空间测绘', category: '资产测绘', url: 'https://fofa.info/', description: '网络空间安全搜索引擎，快速查找全球互联网资产' },
+        { title: 'Hunter鹰图', category: '资产测绘', url: 'https://hunter.qianxin.com/', description: '网络资产测绘平台，提供资产识别、漏洞发现、风险评估等服务' },
+        { title: '360安全大脑网络空间测绘', category: '资产测绘', url: 'https://quake.360.net/quake/', description: '360网络空间测绘 — 因为看见，所以安全' },
+        { title: '微步X情报社区', category: '资产测绘', url: 'https://x.threatbook.com/v5/mapping', description: '微步在线威胁情报平台，提供IP、域名、文件等威胁情报查询' },
+        { title: '知道创宇网络空间雷达', category: '资产测绘', url: 'https://www.zoomeye.org/', description: '网络空间测绘平台，提供资产发现、漏洞扫描、风险监测等服务' },
+        { title: '0.zone攻击面管理系统', category: '资产测绘', url: 'https://0.zone/', description: '零零信安攻击面管理系统，提供全面的网络资产发现和管理' },
+        { title: 'Shodan Search Engine', category: '资产测绘', url: 'https://www.shodan.io/', description: '全球首个互联网连接设备的搜索引擎，可以查找各种联网设备' },
+        { title: 'Censys Search', category: '资产测绘', url: 'https://search.censys.io/', description: '网络空间搜索引擎，提供设备指纹和组件指纹搜索' },
+        
+        // 信息收集
+        { title: '查公司,查老板,查关系...', category: '信息收集', url: 'https://www.tianyancha.com/', description: '企业信息查询平台，提供公司工商信息、股权结构等数据' },
+        { title: '超级Ping', category: '信息收集', url: 'https://ping.chinaz.com/', description: '网络连通性测试工具，支持全球多节点Ping测试' },
+        { title: 'iP反查网站 同一iP网站', category: '信息收集', url: 'https://site.ip138.com/', description: 'IP地址查询工具，支持IP反查域名和同IP网站查询' },
+        { title: 'IP定位查询', category: '信息收集', url: 'https://www.ipuu.net/', description: 'IP地理位置查询工具，提供精确的IP定位信息' },
+        { title: '网址综合信息查询', category: '信息收集', url: 'https://web-check.xyz/', description: '网站综合信息查询工具，提供域名、SSL、DNS等详细信息' },
+        { title: '全网代码搜索', category: '信息收集', url: 'https://grep.app/', description: '全球最大的代码托管平台，发现开源项目和代码' },
+        { title: 'Free online network tools', category: '信息收集', url: 'https://centralops.net/', description: '域名Whois信息查询，了解域名注册信息' },
+        { title: 'DNS解析查询', category: '信息收集', url: 'https://dnsdumpster.com/', description: 'DNS信息查询，了解域名解析情况' },
+        { title: 'APK反编译,APK反编译工具', category: '信息收集', url: 'https://www.mogua.co/', description: 'Android APK反编译工具，支持在线APK分析' },
+        { title: '凌星阁红队作战平台', category: '信息收集', url: 'https://sec.lintstar.top/', description: '红队作战平台，提供渗透测试工具和资源' },
+        
+        // 漏洞平台
+        { title: '国家信息安全漏洞库', category: '漏洞平台', url: 'https://www.cnnvd.org.cn/', description: '国家信息安全漏洞共享平台，提供漏洞信息收集、分析和发布' },
+        { title: 'CVE漏洞库', category: '漏洞平台', url: 'https://cve.mitre.org/', description: '通用漏洞披露数据库，全球标准的漏洞编号系统' },
+        { title: 'Exploit Database', category: '漏洞平台', url: 'https://www.exploit-db.com/', description: '漏洞利用数据库，提供各种漏洞的利用代码和信息' },
+        { title: '漏洞利用市场', category: '漏洞平台', url: 'https://cn.0day.today/', description: '0day漏洞利用代码分享平台' },
+        { title: '阿里云漏洞库', category: '漏洞平台', url: 'https://avd.aliyun.com/', description: '阿里云安全先知社区，安全技术分享与交流平台' },
+        { title: 'NSFOCUS绿盟科技', category: '漏洞平台', url: 'https://www.nsfocus.net/index.php?act=sec_bug', description: '绿盟科技安全漏洞库，提供专业的漏洞信息和安全公告' },
+        
+        // 黑客社区
+        { title: '安全代码存储库', category: '黑客社区', url: 'https://vx-underground.org/', description: '专业的逆向工程和软件安全技术学习平台' },
+        { title: '暗网中文论坛', category: '黑客社区', url: 'http://xxxxxxxxxs6qbnahsbvxbghsnqh4rj6whbyblqtnmetf7vell2fmxmad.onion/', description: '网络安全在线教育平台，提供安全技能培训和实战演练' },
+        { title: 'unknownw社区', category: '黑客社区', url: 'https://unknownw.com/', description: '国内知名的网络安全行业门户，提供安全资讯、技术文章和工具' },
+        { title: 'breachforums', category: '黑客社区', url: 'https://breached.fi/', description: '低调求发展的安全技术社区，专注于安全技术交流' },
+        { title: '奇安信攻防社区', category: '黑客社区', url: 'https://forum.butian.net/community', description: '奇安信攻防社区，安全技术分享和交流平台' },
+        { title: 'T00ls论坛', category: '黑客社区', url: 'https://www.t00ls.com/index.php', description: '国内知名安全技术论坛，安全技术交流社区' },
+        { title: '先知社区', category: '黑客社区', url: 'https://xz.aliyun.com/', description: '阿里云安全先知社区，安全技术分享与交流平台' },
+        
+        // 勒索应急
+        { title: '勒索解密查询', category: '勒索应急', url: 'https://www.nomoreransom.org/zh/decryption-tools.html', description: '国际反勒索病毒项目，提供免费解密工具和预防建议' },
+        { title: 'ID Ransomware', category: '勒索应急', url: 'https://id-ransomware.malwarehunterteam.com/', description: '勒索病毒识别工具，帮助用户识别感染的勒索病毒类型' },
+        { title: '免费勒索软件解密器', category: '勒索应急', url: 'https://noransom.kaspersky.com/zh/', description: '卡巴斯基提供的免费勒索病毒解密工具集合' },
+        { title: '免费勒索软件解密工具', category: '勒索应急', url: 'https://www.avast.com/zh-cn/ransomware-decryption-tools#pc', description: 'Avast提供的免费勒索病毒解密工具' },
+        { title: '360勒索病毒解密', category: '勒索应急', url: 'https://lesuobingdu.360.cn/', description: '360提供的勒索病毒搜索和解密工具，帮助用户识别和解决勒索病毒问题' },
+        { title: '勒索病毒搜索引擎', category: '勒索应急', url: 'https://lesuobingdu.qianxin.com/', description: '奇安信勒索病毒搜索引擎，提供勒索病毒识别和解密服务' },
+        { title: 'VenusEye勒索病毒搜索引擎', category: '勒索应急', url: 'https://lesuo.venuseye.com.cn/', description: '启明星辰VenusEye勒索病毒搜索引擎' },
+        { title: '腾讯勒索病毒搜索引擎', category: '勒索应急', url: 'https://guanjia.qq.com/pr/ls/', description: '腾讯电脑管家勒索病毒搜索引擎' },
+        
+        // AI大模型
+        { title: 'Chatgpt', category: 'AI大模型', url: 'https://chat.openai.com/', description: 'OpenAI开发的大型语言模型，提供智能对话和文本生成服务' },
+        { title: 'Deepseek', category: 'AI大模型', url: 'https://chat.deepseek.com/', description: '杭州深度求索人工智能基础技术研究有限公司' },
+        { title: '通义千问', category: 'AI大模型', url: 'https://tongyi.aliyun.com/qianwen/', description: '阿里云推出的大语言模型，提供智能问答和内容生成服务' },
+        { title: 'Gemini', category: 'AI大模型', url: 'https://gemini.google.com/app', description: 'Google开发的多模态AI助手，具备强大的理解和生成能力' },
+        { title: 'KiMi', category: 'AI大模型', url: 'https://kimi.moonshot.cn/', description: '月之暗面开发的AI助手，支持长文本理解和生成' },
+        { title: '豆包', category: 'AI大模型', url: 'https://www.doubao.com/chat/', description: '字节跳动推出的AI助手，提供智能对话和内容创作服务' },
+        { title: 'Grok', category: 'AI大模型', url: 'https://grok.com/', description: 'X(Twitter)开发的AI助手，具备实时信息获取能力' },
+        { title: 'Copilot', category: 'AI大模型', url: 'https://copilot.microsoft.com', description: '微软必应AI助手，集成搜索和对话功能' }
+      ];
 
-        // Mobile menu toggle
-        if (mobileMenuToggle) {
-          mobileMenuToggle.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-          });
-        }
+      // Mobile menu toggle
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const sidebar = document.getElementById('sidebar');
 
-        // Theme toggle
-        const currentTheme = localStorage.getItem("theme");
-        if (currentTheme) {
-          document.documentElement.setAttribute("data-theme", currentTheme);
-          if (currentTheme === "dark") {
-            themeToggleFloatingButton.querySelector("i").classList.replace("fa-moon", "fa-sun");
-          } else {
-            themeToggleFloatingButton.querySelector("i").classList.replace("fa-sun", "fa-moon");
-          }
-        }
+      mobileMenuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+      });
 
-        const toggleTheme = () => {
-          let theme = document.documentElement.getAttribute("data-theme");
-          if (theme === "dark") {
-            document.documentElement.removeAttribute("data-theme");
-            localStorage.setItem("theme", "light");
-            themeToggleFloatingButton.querySelector("i").classList.replace("fa-sun", "fa-moon");
-          } else {
-            document.documentElement.setAttribute("data-theme", "dark");
-            localStorage.setItem("theme", "dark");
-            themeToggleFloatingButton.querySelector("i").classList.replace("fa-moon", "fa-sun");
-          }
-        };
-
-        themeToggleFloatingButton.addEventListener("click", toggleTheme);
-
-        // Back to top button
-        const scrollToTop = () => {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        };
-
-        backToTopFloatingButton.addEventListener("click", scrollToTop);
-
-        // Show/hide back to top button based on scroll position
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 200) {
-            backToTopFloatingButton.style.display = "flex";
-          } else {
-            backToTopFloatingButton.style.display = "none";
-          }
-        });
-
-        // Search functionality
-        searchInput.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") {
-            const query = searchInput.value;
-            if (query) {
-              window.open(`https://www.baidu.com/s?wd=${query}`, "_blank");
-            }
-          }
-        });
-
-        // Smooth scroll for sidebar navigation
-        categoryLinks.forEach((link) => {
-          link.addEventListener("click", function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
-
-            if (targetSection) {
-              window.scrollTo({
-                top: targetSection.offsetTop - 80, // Adjust for fixed header
-                behavior: "smooth",
-              });
-
-              // Remove active class from all links
-              categoryLinks.forEach((l) => l.classList.remove("active"));
-              // Add active class to the clicked link
-              this.classList.add("active");
-            }
-          });
-        });
-
-        // Highlight active sidebar link on scroll
-        const observerOptions = {
-          root: null,
-          rootMargin: "-90px 0px -50% 0px", // Adjust this to control when sections become active
-          threshold: 0,
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const currentActive = document.querySelector(".nav-link.active");
-              if (currentActive) {
-                currentActive.classList.remove("active");
-              }
-              const correspondingLink = document.querySelector(
-                `.nav-link[data-category="${entry.target.id}"]`
-              );
-              if (correspondingLink) {
-                correspondingLink.classList.add("active");
-              }
-            }
-          });
-        }, observerOptions);
-
-        categorySections.forEach((section) => {
-          observer.observe(section);
-        });
-
-        // Set initial active link on page load
-        if (categorySections.length > 0) {
-          const firstSectionId = categorySections[0].id;
-          const firstLink = document.querySelector(
-            `.nav-link[data-category="${firstSectionId}"]`
-          );
-          if (firstLink) {
-            firstLink.classList.add("active");
-          }
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            !sidebar.contains(e.target) && 
+            !mobileMenuToggle.contains(e.target)) {
+          sidebar.classList.remove('open');
         }
       });
-    </script>
 
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            // Close mobile menu
+            if (window.innerWidth <= 768) {
+              sidebar.classList.remove('open');
+            }
+          }
+        });
+      });
+
+      // Search functionality
+      const searchInput = document.querySelector('.search-input');
+      const searchResults = document.getElementById('searchResults');
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        
+        if (query.length === 0) {
+          searchResults.style.display = 'none';
+          return;
+        }
+
+        const filteredResults = siteData.filter(item => 
+          item.title.toLowerCase().includes(query) ||
+          item.category.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
+        ).slice(0, 8); // Limit to 8 results
+
+        if (filteredResults.length > 0) {
+          searchResults.innerHTML = filteredResults.map(item => `
+            <div class="search-result-item" onclick="window.open('${item.url}', '_blank')">
+              <div class="search-result-title">${item.title}</div>
+              <div class="search-result-category">${item.category}</div>
+            </div>
+          `).join('');
+          searchResults.style.display = 'block';
+        } else {
+          searchResults.innerHTML = '<div class="search-result-item">未找到相关结果</div>';
+          searchResults.style.display = 'block';
+        }
+      });
+
+      // Hide search results when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+          searchResults.style.display = 'none';
+        }
+      });
+
+      // Back to top functionality
+      const backToTopBtn = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.style.display = 'flex';
+        } else {
+          backToTopBtn.style.display = 'none';
+        }
+      });
+
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = themeToggle.querySelector('i');
+      
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+      }
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+          themeIcon.className = 'fas fa-sun';
+        } else {
+          themeIcon.className = 'fas fa-moon';
+        }
+      }
+
+      // Intersection Observer for active nav highlighting
+      const sections = document.querySelectorAll('.category-section');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            const correspondingNavLink = document.querySelector(`[href="#${sectionId}"]`);
+            
+            // Remove active class from all nav links
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Add active class to corresponding nav link
+            if (correspondingNavLink) {
+              correspondingNavLink.classList.add('active');
+            }
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+
+      // Add fade-in animation to cards
+      const cards = document.querySelectorAll('.link-card');
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        cardObserver.observe(card);
+      });
+    </script>
   </body>
 </html>
-
