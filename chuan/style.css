@@ -310,3 +310,9 @@ footer {
     }
 }
 
+.hint-text {
+    color: #888; /* 淡灰色 */
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
