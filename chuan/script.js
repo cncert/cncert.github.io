@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     item.星期 === day && item.节次 === period
                 );
                 const course = courseItem ? courseItem.课程 : "-";
-                tableHTML += `<td>${course}</td>`;
+                tableHTML += `<td data-label="${period}">${course}</td>`;
             });
             tableHTML += `</tr>`;
         });

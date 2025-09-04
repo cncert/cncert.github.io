@@ -223,6 +223,43 @@ footer {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* 允许横向滚动 */
+}
+
+@media (max-width: 768px) {
+    .schedule-table {
+        display: block; /* 使表格在小屏幕上可以滚动 */
+        white-space: nowrap; /* 防止内容换行 */
+    }
+
+    .schedule-table thead, .schedule-table tbody, .schedule-table th, .schedule-table td, .schedule-table tr {
+        display: block; /* 使表格元素在小屏幕上堆叠 */
+    }
+
+    .schedule-table th {
+        position: sticky; /* 固定表头 */
+        left: 0;
+        background-color: #8a2be2;
+        z-index: 1;
+    }
+
+    .schedule-table td {
+        border-bottom: none;
+        position: relative;
+        padding-left: 50%; /* 为标签留出空间 */
+        text-align: right;
+    }
+
+    .schedule-table td::before {
+        content: attr(data-label); /* 显示标签 */
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
 }
 
 .schedule-table th,
@@ -252,47 +289,24 @@ footer {
     color: #333;
 }
 
+
 .week-toggle {
     margin: 20px 0;
     text-align: center;
-}
-
-.week-toggle button {
-    margin: 0 5px;
-    padding: 10px 20px;
-    border: 2px solid #8a2be2;
-    background: white;
-    color: #8a2be2;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.95em;
-}
-
-.week-toggle button.active {
-    background: #8a2be2;
-    color: white;
-}
-
-.week-toggle button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* 按钮之间的间距 */
 }
 
 @media (max-width: 768px) {
-    .schedule-table {
-        font-size: 0.8em;
+    .week-toggle {
+        flex-direction: column; /* 在小屏幕上垂直堆叠 */
+        gap: 8px; /* 垂直堆叠时的间距 */
     }
-    
-    .schedule-table th,
-    .schedule-table td {
-        padding: 8px 5px;
-    }
-    
+
     .week-toggle button {
-        padding: 8px 15px;
-        font-size: 0.85em;
-        margin: 2px;
+        width: 80%; /* 按钮宽度 */
+        margin: 0 auto; /* 居中显示 */
     }
 }
 
