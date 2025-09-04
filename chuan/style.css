@@ -31,15 +31,21 @@ h1 {
 
 .search-box {
     display: flex;
-    flex-direction: column; /* 修改为列方向 */
+    flex-direction: column; /* search-box 自身是列方向，包含 input-button-group 和 hintText */
     align-items: center; /* 居中对齐 */
-    gap: 12px;
+    gap: 12px; /* search-box 内部元素之间的间距 */
     margin-bottom: 35px;
 }
 
-.search-box input[type="text"] {
-    width: 100%; /* 确保输入框宽度 */
+.input-button-group {
+    display: flex; /* input 和 button 在同一行 */
+    gap: 12px;
+    width: 100%; /* 占据 search-box 的全部宽度 */
     max-width: 300px; /* 限制最大宽度 */
+}
+
+.input-button-group input[type="text"] {
+    flex-grow: 1; /* 确保输入框占据可用空间 */
     padding: 14px 18px;
     border: 1px solid #dcdcdc; /* 浅灰色边框 */
     border-radius: 10px; /* 适度圆角 */
@@ -53,7 +59,7 @@ input[type="text"]:focus {
     box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1); /* 焦点柔和阴影 */
 }
 
-button {
+.input-button-group button {
     padding: 14px 28px;
     background-color: #8a2be2; /* 柔和紫色按钮 */
     color: white;
@@ -145,14 +151,19 @@ footer {
         gap: 15px;
     }
 
-    input[type="text"] {
+    .input-button-group {
+        flex-direction: column; /* 手机端 input 和 button 变为列方向 */
+        gap: 15px;
+    }
+
+    .input-button-group input[type="text"] {
         padding: 15px;
         font-size: 16px; /* 防止iOS Safari缩放 */
         border-radius: 10px;
         -webkit-appearance: none; /* 移除iOS默认样式 */
     }
 
-    button {
+    .input-button-group button {
         width: 100%;
         padding: 15px 25px;
         font-size: 16px;
@@ -181,7 +192,8 @@ footer {
         font-size: 1.6em;
     }
 
-    input[type="text"], button {
+    .input-button-group input[type="text"],
+    .input-button-group button {
         padding: 12px;
         font-size: 16px;
     }
@@ -285,37 +297,10 @@ footer {
     box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
 }
 
-@media (max-width: 768px) {
-    .schedule-table {
-        font-size: 0.8em;
-    }
-    
-    .schedule-table th,
-    .schedule-table td {
-        padding: 8px 5px;
-    }
-    
-    .week-toggle button {
-        padding: 8px 15px;
-        font-size: 0.85em;
-        margin: 2px;
-    }
-}
-
-@media (max-width: 480px) {
-    .schedule-table {
-        font-size: 0.75em;
-    }
-    
-    .schedule-table th,
-    .schedule-table td {
-        padding: 6px 3px;
-    }
-}
-
 .hint-text {
     color: #888; /* 淡灰色 */
     font-size: 0.9em;
     margin-top: 5px;
+    text-align: center; /* 确保文本居中 */
+    width: 100%; /* 确保占据整行 */
 }
-
