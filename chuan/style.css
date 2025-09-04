@@ -185,3 +185,125 @@ footer {
 }
 
 
+
+/* 课程表相关样式 */
+.toggle-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.toggle-label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.toggle-label input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    accent-color: #8a2be2;
+}
+
+.toggle-text {
+    user-select: none;
+}
+
+.schedule-results {
+    margin-top: 30px;
+    display: none;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.schedule-table th {
+    background-color: #8a2be2;
+    color: white;
+    font-weight: bold;
+    font-size: 1.05em;
+}
+
+.schedule-table tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.schedule-table tr:hover {
+    background-color: #f0f0f0;
+}
+
+.schedule-table td {
+    font-size: 0.95em;
+    color: #333;
+}
+
+.week-toggle {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.week-toggle button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: 2px solid #8a2be2;
+    background: white;
+    color: #8a2be2;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.95em;
+}
+
+.week-toggle button.active {
+    background: #8a2be2;
+    color: white;
+}
+
+.week-toggle button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
+}
+
+@media (max-width: 768px) {
+    .schedule-table {
+        font-size: 0.8em;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+        padding: 8px 5px;
+    }
+    
+    .week-toggle button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+        margin: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-table {
+        font-size: 0.75em;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+        padding: 6px 3px;
+    }
+}
+

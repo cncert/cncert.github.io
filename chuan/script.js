@@ -2,7 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const studentNameInput = document.getElementById("studentNameInput");
     const searchButton = document.getElementById("searchButton");
     const searchResultsDiv = document.getElementById("searchResults");
+    const scheduleResultsDiv = document.getElementById("scheduleResults");
+    const showScheduleToggle = document.getElementById("showScheduleToggle");
+    
     let studentsData = [];
+    let scheduleData = [];
+    let currentWeek = "单周";
 
     // 低亮度可爱颜色数组
     const cuteColors = [
@@ -33,6 +38,96 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("加载学生数据失败:", error);
             searchResultsDiv.innerHTML = "<p class=\"error-message\">加载学生数据失败，请稍后再试。</p>";
         });
+
+    // 加载课程表数据
+    fetch("course_schedule.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            scheduleData = data;
+            console.log("课程表数据加载成功:", scheduleData);
+        })
+        .catch(error => {
+            console.error("加载课程表数据失败:", error);
+        });
+
+    // 显示/隐藏课程表
+    showScheduleToggle.addEventListener("change", () => {
+        if (showScheduleToggle.checked) {
+            scheduleResultsDiv.style.display = "block";
+            displaySchedule();
+        } else {
+            scheduleResultsDiv.style.display = "none";
+        }
+    });
+
+    // 显示课程表
+    const displaySchedule = () => {
+        if (scheduleData.length === 0) {
+            scheduleResultsDiv.innerHTML = "<p class=\"error-message\">课程表数据未加载。</p>";
+            return;
+        }
+
+        // 创建单双周切换按钮
+        const weekToggleHTML = `
+            <div class="week-toggle">
+                <button id="singleWeekBtn" class="${currentWeek === '单周' ? 'active' : ''}">单周</button>
+                <button id="doubleWeekBtn" class="${currentWeek === '双周' ? 'active' : ''}">双周</button>
+            </div>
+        `;
+
+        // 过滤当前周的数据
+        const currentWeekData = scheduleData.filter(item => item.单双周 === currentWeek);
+        
+        // 创建课程表
+        const weekdays = ["星期一", "星期二", "星期三", "星期四", "星期五"];
+        const periods = ["第一节", "第二节", "第三节", "第四节", "第五节", "第六节", "第七节", "第八节"];
+        
+        let tableHTML = `
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>节次/星期</th>
+                        ${weekdays.map(day => `<th>${day}</th>`).join('')}
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        periods.forEach(period => {
+            tableHTML += `<tr><td><strong>${period}</strong></td>`;
+            weekdays.forEach(day => {
+                const courseItem = currentWeekData.find(item => 
+                    item.星期 === day && item.节次 === period
+                );
+                const course = courseItem ? courseItem.课程 : "-";
+                tableHTML += `<td>${course}</td>`;
+            });
+            tableHTML += `</tr>`;
+        });
+
+        tableHTML += `
+                </tbody>
+            </table>
+        `;
+
+        scheduleResultsDiv.innerHTML = weekToggleHTML + tableHTML;
+
+        // 添加周切换事件监听器
+        document.getElementById("singleWeekBtn").addEventListener("click", () => {
+            currentWeek = "单周";
+            displaySchedule();
+        });
+
+        document.getElementById("doubleWeekBtn").addEventListener("click", () => {
+            currentWeek = "双周";
+            displaySchedule();
+        });
+    };
 
     // 查询功能
     const performSearch = () => {
@@ -76,5 +171,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
 
