@@ -223,31 +223,6 @@ footer {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* 允许横向滚动 */
-}
-
-.schedule-table thead th {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-
-.schedule-table tbody th {
-    position: sticky;
-    left: 0;
-    z-index: 1;
-}
-
-@media (max-width: 768px) {
-    .schedule-table {
-        display: block;
-        white-space: nowrap;
-    }
-
-    .schedule-table th,
-    .schedule-table td {
-        white-space: normal;
-    }
 }
 
 .schedule-table th,
@@ -280,9 +255,9 @@ footer {
 .week-toggle {
     margin: 20px 0;
     text-align: center;
-    display: flex; /* PC端并排显示 */
+    display: flex;
     justify-content: center;
-    gap: 10px; /* 按钮之间的间距 */
+    gap: 10px;
 }
 
 .week-toggle button {
@@ -307,16 +282,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .week-toggle {
-        flex-direction: column; /* 手机端垂直堆叠 */
-        gap: 8px; /* 垂直堆叠时的间距 */
-    }
-
-    .week-toggle button {
-        width: 80%; /* 手机端按钮宽度 */
-        margin: 0 auto; /* 手机端居中显示 */
-    }
-
     .schedule-table {
         font-size: 0.8em;
     }
@@ -324,6 +289,12 @@ footer {
     .schedule-table th,
     .schedule-table td {
         padding: 8px 5px;
+    }
+    
+    .week-toggle button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+        margin: 2px;
     }
 }
 
