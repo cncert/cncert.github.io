@@ -31,12 +31,15 @@ h1 {
 
 .search-box {
     display: flex;
+    flex-direction: column; /* 修改为列方向 */
+    align-items: center; /* 居中对齐 */
     gap: 12px;
     margin-bottom: 35px;
 }
 
-input[type="text"] {
-    flex-grow: 1;
+.search-box input[type="text"] {
+    width: 100%; /* 确保输入框宽度 */
+    max-width: 300px; /* 限制最大宽度 */
     padding: 14px 18px;
     border: 1px solid #dcdcdc; /* 浅灰色边框 */
     border-radius: 10px; /* 适度圆角 */
