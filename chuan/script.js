@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const studentNameInput = document.getElementById("studentNameInput");
     const searchButton = document.getElementById("searchButton");
@@ -135,31 +136,50 @@ document.addEventListener("DOMContentLoaded", () => {
         searchResultsDiv.innerHTML = ""; // 清空之前的查询结果
 
         if (searchTerm === "") {
-            searchResultsDiv.innerHTML = "<p class=\"error-message\">请输入学生姓名进行查询。</p>";
+            searchResultsDiv.innerHTML = "<p class=\"error-message\">请输入学生姓名或星期进行查询。</p>";
             return;
         }
 
-        const foundStudents = studentsData.filter(student => student["姓名"] === searchTerm);
+        const weekdays = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"];
+        if (weekdays.includes(searchTerm)) {
+            // 查询星期
+            const foundStudents = studentsData.filter(student => student["值日时间"].includes(searchTerm));
 
-        if (foundStudents.length > 0) {
-            foundStudents.forEach(student => {
-                const fields = [
-                    { label: "姓名", value: student["姓名"] },
-                    { label: "学号", value: student["学号"] },
-                    { label: "值日时间", value: student["值日时间"] },
-                    { label: "值日任务", value: student["值日任务"] }
-                ];
-
-                fields.forEach(field => {
+            if (foundStudents.length > 0) {
+                foundStudents.forEach(student => {
                     const studentTag = document.createElement("div");
                     studentTag.classList.add("student-tag");
                     studentTag.style.backgroundColor = getRandomColor(); // 设置随机背景色
-                    studentTag.innerHTML = `<strong>${field.label}:</strong> ${field.value}`;
+                    studentTag.innerHTML = `<strong>姓名:</strong> ${student["姓名"]} <strong>值日任务:</strong> ${student["值日任务"]}`;
                     searchResultsDiv.appendChild(studentTag);
                 });
-            });
+            } else {
+                searchResultsDiv.innerHTML = `<p class=\"error-message\">${searchTerm}没有值日学生。</p>`;
+            }
         } else {
-            searchResultsDiv.innerHTML = "<p class=\"error-message\">未找到该学生的信息，请检查姓名是否正确。</p>";
+            // 查询学生姓名
+            const foundStudents = studentsData.filter(student => student["姓名"] === searchTerm);
+
+            if (foundStudents.length > 0) {
+                foundStudents.forEach(student => {
+                    const fields = [
+                        { label: "姓名", value: student["姓名"] },
+                        { label: "学号", value: student["学号"] },
+                        { label: "值日时间", value: student["值日时间"] },
+                        { label: "值日任务", value: student["值日任务"] }
+                    ];
+
+                    fields.forEach(field => {
+                        const studentTag = document.createElement("div");
+                        studentTag.classList.add("student-tag");
+                        studentTag.style.backgroundColor = getRandomColor(); // 设置随机背景色
+                        studentTag.innerHTML = `<strong>${field.label}:</strong> ${field.value}`;
+                        searchResultsDiv.appendChild(studentTag);
+                    });
+                });
+            } else {
+                searchResultsDiv.innerHTML = "<p class=\"error-message\">未找到该学生的信息，请检查姓名是否正确。</p>";
+            }
         }
     };
 
@@ -171,4 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
 
