@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                 });
             } else {
-                searchResultsDiv.innerHTML = "<p class=\"error-message\">未找到该学生的信息，请检查姓名是否正确。</p>";
+                searchResultsDiv.innerHTML = "<p class=\"error-message\">请输入学生姓名或星期进行查询。</p>";
             }
         }
     };
