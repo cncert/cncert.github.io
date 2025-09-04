@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const studentTag = document.createElement("div");
                     studentTag.classList.add("student-tag");
                     studentTag.style.backgroundColor = getRandomColor(); // 设置随机背景色
-                    studentTag.innerHTML = `<strong>姓名:</strong> ${student["姓名"]} <strong>值日任务:</strong> ${student["值日任务"]}`;
+                    studentTag.innerHTML = `<strong>姓名:</strong> ${student["姓名"]} <strong> 值日任务🧹:</strong> ${student["值日任务"]}`;
                     searchResultsDiv.appendChild(studentTag);
                 });
             } else {
