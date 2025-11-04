@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="viggo" />
+  <title>安全导航</title>
+  <meta name="keywords" content=" " />
+  <meta name="description" content=" " />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arimo:400,700,400italic" />
+  <link rel="stylesheet" href="/assets/css/linecons.min.css" />
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/assets/css/fcicon.css">
+  <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+  <link rel="stylesheet" href="/assets/css/xenon-core.min.css" />
+  <link rel="stylesheet" href="/assets/css/xenon-components.min.css" />
+  <link rel="stylesheet" href="/assets/css/xenon-skins.min.css" />
+  <link rel="stylesheet" href="/assets/css/nav.min.css" />
+  <link rel="stylesheet" href="/assets/css/fk_service.min.css" />
+  <script src="/assets/js/jquery-1.11.1.min.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <!-- / FB Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://www.redteam.eu.cc/" />
+  <meta property="og:title" content="网络安全,网址导航,黑客网址,安全工具" />
+  <meta property="og:description" content="网络安全,网址导航,黑客网址,安全工具" />
+  <meta property="og:site_name" content="网络安全,网址导航,黑客网址,安全工具" />
+  <!-- / Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="网络安全,网址导航,黑客网址,安全工具" />
+  <meta name="twitter:description" content="网络安全,网址导航,黑客网址,安全工具" />
+</head>
+
+<body class="page-body">
+  <!-- skin-white -->
+  <div class="page-container">
+    <div class="sidebar-menu toggle-others fixed">
+      <div class="sidebar-menu-inner">
+        <header class="logo-env">
+          <!-- logo -->
+          <div class="logo">
+            <a href="./" class="logo-expanded">
+              <img src="./assets/images/logo@2x.png" height="100%" alt="" />
+            </a>
+          </div>
+          <div class="mobile-menu-toggle visible-xs">
+            <!--<a href="#" data-toggle="user-info-menu">
+                            <i class="linecons-cog"></i>
+                        </a>-->
+            <a href="#" data-toggle="mobile-menu">
+              <i class="fa-bars"></i>
+            </a>
+          </div>
+        </header>
+        <ul id="main-menu" class="main-menu">
+          <li>
+            <a href="#威胁情报" class="smooth">
+              <i class="linecons-calendar"></i>
+              <span class="title">威胁情报</span>
+              <span class="label label-pink pull-right hidden-collapsed">热门</span>
+            </a>
+          </li>
+          <li>
+            <a href="#资产测绘" class="smooth">
+              <i class="linecons-eye"></i>
+              <span class="title">资产测绘</span>
+              <span class="label label-blue pull-right hidden-collapsed">聚焦</span>
+            </a>
+          </li>
+          <li>
+          <li>
+            <a href="#信息收集" class="smooth">
+              <i class="linecons-search"></i>
+              <span class="title">信息收集</span>
+            </a>
+          </li>
+          <li>
+            <a href="#漏洞平台" class="smooth">
+              <i class="linecons-camera"></i>
+              <span class="title">漏洞平台</span>
+            </a>
+          </li>
+              <li>
+            <a href="#黑客社区" class="smooth">
+              <i class="linecons-user"></i>
+              <span class="title">黑客社区</span>
+            </a>
+          </li>      
+              <li>
+            <a href="#勒索应急" class="smooth">
+              <i class="linecons-money"></i>
+              <span class="title">勒索应急</span>
+            </a>
+          </li> 
+              <li>
+            <a href="#AI大模型" class="smooth">
+              <i class="linecons-pencil"></i>
+              <span class="title">AI大模型</span>
+            </a>
+          </li> 
+          <li>
+          <li>
+            <a href="#本站导航" class="smooth">
+              <i class="linecons-location"></i>
+              <span class="title">本站导航</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <div class="main-content">
+      <nav class="navbar user-info-navbar" role="navigation" style="margin-bottom: 0px">
+        <!-- User Info, Notifications and Menu Bar -->
+        <!-- Left links for user info navbar -->
+        <ul class="user-info-menu left-links list-inline list-unstyled">
+          <li class="hidden-sm hidden-xs">
+            <!--<a href="#" data-toggle="sidebar">
+                            <i class="fa-bars"></i>
+                        </a>-->
+          </li>
+        </ul>
+        <div id="top_info" style="padding: 25px 20px;font-size: 15px;color: #979898;">
+          <!-- 显示当前时间开始 -->
+          <span id="c_time">
+            <script type="text/javascript">
+              function c_time() {
+                var c_date = new Date();
+                document.getElementById('c_time').innerHTML =
+                  c_date.getFullYear() +
+                  '年' +
+                  (c_date.getMonth() + 1) +
+                  '月' +
+                  c_date.getDate() +
+                  '日' +
+                  ' 星期' +
+                  '日一二三四五六'.charAt(c_date.getDay()) +
+                  ' ' +
+                  c_date.toTimeString().split(' ')[0];
+              }
+              setInterval(c_time, 250);
+            </script>
+          </span>
+          <!-- END 显示当前时间结束 -->
+          <!-- 显示倒计时开始 -->
+          <span id="f1china">
+            <script>
+              const targetDate = new Date("2026-02-17T00:00:00+08:00");
+              function updateCountdown() {
+                const currentDate = new Date();
+                if (currentDate < new Date(targetDate.getTime() + 24 * 60 * 60 * 1000)) {
+                  const timeDifference = targetDate - currentDate;
+                  const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+                  document.getElementById("f1china").textContent = `🎇距离2026年春节还有${daysRemaining}天🎇`;                  
+                }
+              }
+              setInterval(updateCountdown, 1000);
+            </script>
+          </span>
+          <!-- END 显示倒计时结束 -->
+          <!-- 显示当前IP开始 -->
+          <span id="c_ip">
+            <script type="text/javascript" src="https://haoip.cn/ipjs"></script>
+          </span>
+          <!-- END 显示当前IP结束 -->
+          <!-- 夜间模式开始 -->
+          <span id="swicthNightMode"><a id="icon-switch" onclick="switchNightMode()" target="_self"
+              style="margin-left: 10px;"><svg id="icon-yueliang" viewBox="0 0 1024 1024">
+                <path
+                  d="M574.049837 1023.363002C833.211234 1000.689318 1027.89473 780.852556 1027.759754 525.275556c-2.170885-24.813325-25.91564-42.182903-50.728965-40.012018-13.785181 1.206047-27.087943 7.926166-34.394213 19.677939-50.075325 62.721947-123.895405 108.074316-209.363526 115.551808-168.179204 14.713774-315.334445-111.318772-330.048219-279.497977-7.718701-88.225156 21.368905-168.557891 77.199512-229.00522 7.54748-8.994737 11.855505-23.262336 10.649458-37.047517-2.170885-24.813325-23.158603-42.424112-48.213138-43.010264-251.717649 44.247555-431.409918 276.663451-408.495024 538.581884 23.638522 270.189541 266.73762 476.728543 539.684198 452.848811z"
+                  fill="#FFB948"></path>
+              </svg></a></span>
+          <!-- 夜间模式结束 -->
+          <!-- Start covid19 -->
+          <!-- <span id="covid19" style="margin-left: 10px;"></span>
+            <script id="covid19-js" src="//cdn.jsdelivr.net/gh/Jay-Young/homepage/assets/js/ajax.min.js" onload="getData()"></script> -->
+          <!-- End convid19 -->
+        </div>
+      </nav>
+      <!-- 搜索框 -->
+      <div id="search" class="s-search">
+        <div id="search-list" class="hide-type-list">
+          <div class="s-type">
+            <span></span>
+            <div class="s-type-list animated fadeInUp">
+              <label for="type-chatgpt">
+                <span class="tile-lg bg-blue">
+                  <i class="fa fa-star fa-2x m-t-sm"></i> </span>常用</label>
+              <label for="type-search">
+                <span class="tile-lg bg-teal">
+                  <i class="fa fa-search fa-2x m-t-sm"></i> </span>搜索</label>
+              <label for="type-tgx">
+                <span class="tile-lg bg-pink">
+                  <i class="fa fa-suitcase fa-2x m-t-sm"></i> </span>工具</label>
+              <label for="type-v2ex">
+                <span class="tile-lg bg-yellow">
+                  <i class="fa fa-globe fa-2x m-t-sm"></i> </span>社区</label>
+              <label for="type-taobao1">
+                <span class="tile-lg bg-red">
+                  <i class="fa fa-coffee fa-2x m-t-sm"></i> </span>生活</label>
+              <label for="type-bilibili">
+                <span class="tile-lg bg-purple">
+                  <i class="fa fa-play-circle fa-2x m-t-sm"></i> </span>影音</label>
+            </div>
+          </div>
+          <div class="search-group group-a">
+            <span class="type-text">常用</span>
+            <ul class="search-type">
+              <li>
+                <input checked hidden type="radio" name="type" id="type-chatgpt" value="//chatgpt.com/search?q="
+                  data-placeholder="AI问答" />
+                <label for="type-chatgpt">
+                  <span style="color:#5d5d5d">ChatGPT</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-baidu" value="//www.baidu.com/s?wd="
+                  data-placeholder="百度一下" />
+                <label for="type-baidu">
+                  <span style="color:#2100E0">百度</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-google" value="//www.google.com/search?q="
+                  data-placeholder="谷歌搜索" />
+                <label for="type-google">
+                  <span style="color:#3B83FA">G</span><span style="color:#F3442C">o</span><span
+                    style="color:#FFC300">o</span><span style="color:#4696F8">g</span><span
+                    style="color:#2CAB4E">l</span><span style="color:#F54231">e</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-bing" value="//cn.bing.com/search?q="
+                  data-placeholder="微软Bing搜索" />
+                <label for="type-bing">
+                  <span style="color:#00809d">Bing</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="search-group group-b">
+            <span class="type-text">搜索</span>
+            <ul class="search-type">
+              <li>
+                <input hidden type="radio" name="type" id="type-search" value="//www.baidu.com/s?wd="
+                  data-placeholder="百度一下" />
+                <label for="type-search">
+                  <span style="color:#2319dc">百度</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-google1" value="//www.google.com/search?q="
+                  data-placeholder="谷歌搜索" />
+                <label for="type-google1">
+                  <span style="color:#3B83FA">G</span><span style="color:#F3442C">o</span><span
+                    style="color:#FFC300">o</span><span style="color:#4696F8">g</span><span
+                    style="color:#2CAB4E">l</span><span style="color:#F54231">e</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-bing1" value="//cn.bing.com/search?q="
+                  data-placeholder="微软Bing搜索" />
+                <label for="type-bing1">
+                  <span style="color:#007daa">Bing</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-duckduckgo1" value="//duckduckgo.com/?q="
+                  data-placeholder="DuckDuckGo" />
+                <label for="type-duckduckgo1">
+                  <span style="color:#e25b01">冲鸭</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-3601" value="//www.so.com/s?q="
+                  data-placeholder="360好搜" />
+                <label for="type-3601">
+                  <span style="color:#19b955">360</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-sogo" value="//www.sogou.com/web?query="
+                  data-placeholder="搜狗搜索" />
+                <label for="type-sogo">
+                  <span style="color:#ff5943">搜狗</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-sm" value="//yz.m.sm.cn/s?q="
+                  data-placeholder="UC移动端搜索" />
+                <label for="type-sm">
+                  <span style="color:#ff8608">神马</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-mj" value="//mijisou.com/?q=" data-placeholder="秘迹搜索" />
+                <label for="type-mj">
+                  <span style="color:#4e4e4e">秘迹</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-yandex" value="//yandex.com/search/?text="
+                  data-placeholder="Yandex" />
+                <label for="type-yandex">
+                  <span style="color:#ffdb4d">Yandex</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="search-group group-c">
+            <span class="type-text">工具</span>
+            <ul class="search-type">
+              <li>
+                <input hidden type="radio" name="type" id="type-tgx" value="https://torrentgalaxy.mx/torrents.php?search="
+                  data-placeholder="搜索资源" />
+                <label for="type-tgx">
+                  <span style="color:#0092ac">TGX</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-sukebei" value="https://sukebei.nyaa.si/?f=0&c=0_0&q="
+                  data-placeholder="🈲未成年止步🈲" />
+                <label for="type-sukebei">
+                  <span style="color:#ff4642">Nyaa</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-zimuku" value="https://so.zimuku.org/search?q="
+                  data-placeholder="搜索字幕" />
+                <label for="type-zimuku">
+                  <span style="color:#428dff">字幕库</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-subhd" value="https://subhd.tv/search/"
+                  data-placeholder="搜索字幕" />
+                <label for="type-subhd">
+                  <span style="color:#016DBD">SubHD</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-ping" value="http://ping.chinaz.com/"
+                  data-placeholder="请输入网址(不带http://)" />
+                <label for="type-ping">
+                  <span style="color:#00599e">PING检测</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-myqnap" value="https://www.myqnap.org/?s="
+                  data-placeholder="QPKG" />
+                <label for="type-myqnap">
+                  <span style="color:#14213d">MyQNAP</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="search-group group-d">
+            <span class="type-text">社区</span>
+            <ul class="search-type">
+              <li>
+                <input hidden type="radio" name="type" id="type-stackoverflow" value="//stackoverflow.com/search?q="
+                  data-placeholder="StackOverflow" />
+                <label for="type-stackoverflow">
+                  <span style="color:#f48024">SOF</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-segmentfault" value="//segmentfault.com/search?q="
+                  data-placeholder="SegmentFault" />
+                <label for="type-segmentfault">
+                  <span style="color:#009a61">思否</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-v2ex" value="//www.sov2ex.com/?q="
+                  data-placeholder="V2EX" />
+                <label for="type-v2ex">
+                  <span style="color:#000000">V2EX</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-zhihu" value="//www.zhihu.com/search?type=content&q="
+                  data-placeholder="知乎" />
+                <label for="type-zhihu">
+                  <span style="color:#0084ff">知乎</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-wechat1" value="//weixin.sogou.com/weixin?type=2&query="
+                  data-placeholder="搜狗微信搜索" />
+                <label for="type-wechat1">
+                  <span style="color:#00a06a">微信</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-weibo" value="//s.weibo.com/weibo/"
+                  data-placeholder="微博" />
+                <label for="type-weibo">
+                  <span style="color:#e6162d">微博</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-douban" value="//www.douban.com/search?q="
+                  data-placeholder="豆瓣" />
+                <label for="type-douban">
+                  <span style="color:#55a300">豆瓣</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-why" value="//ask.seowhy.com/search/?q="
+                  data-placeholder="SEO问答社区" />
+                <label for="type-why">
+                  <span style="color:#428bca">搜外问答</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="search-group group-e">
+            <span class="type-text">生活</span>
+            <ul class="search-type">
+              <li>
+                <input hidden type="radio" name="type" id="type-taobao1" value="//s.taobao.com/search?q="
+                  data-placeholder="淘宝" />
+                <label for="type-taobao1">
+                  <span style="color:#f40">淘宝</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-jd" value="//search.jd.com/Search?keyword="
+                  data-placeholder="京东" />
+                <label for="type-jd">
+                  <span style="color:#c91623">京东</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-xiachufang"
+                  value="http://www.xiachufang.com/search/?keyword=" data-placeholder="下厨房搜菜谱" />
+                <label for="type-xiachufang">
+                  <span style="color:#dd3915">下厨房</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-xiangha" value="//www.xiangha.com/so/?q=caipu&s="
+                  data-placeholder="香哈搜菜谱" />
+                <label for="type-xiangha"><span style="color:#930">香哈菜谱</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-12306"
+                  value="//kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc&fs=" data-placeholder="输入始发站" />
+                <label for="type-12306">
+                  <span style="color:#07f">12306</span>
+                </label>
+              </li>
+              <!-- <li><input hidden type="radio" name="type" id="type-qunar" value="//www.qunar.com/?"
+                                    data-placeholder="去哪儿"><label for="type-qunar"><span style="color:#00afc7">去哪儿</span></label>
+                                  </li> -->
+              <li>
+                <input hidden type="radio" name="type" id="type-快递100" value="//www.kuaidi100.com/chaxun?nu="
+                  data-placeholder="输入快递单号查询" />
+                <label for="type-快递100">
+                  <span style="color:#3278e6">查快递</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="search-group group-f">
+            <span class="type-text">影音</span>
+            <ul class="search-type">
+              <li>
+                <input hidden type="radio" name="type" id="type-youtube" value="//www.youtube.com/results?search_query="
+                  data-placeholder="YouTube" />
+                <label for="type-youtube">
+                  <span style="color:#ff0000">油管</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-bilibili" value="//search.bilibili.com/all?keyword="
+                  data-placeholder="哔哩哔哩" />
+                <label for="type-bilibili">
+                  <span style="color:#00aeec">哔哩哔哩</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-tencentvideo" value="//v.qq.com/x/search/?q="
+                  data-placeholder="腾讯视频" />
+                <label for="type-tencentvideo">
+                  <span style="color:#ff5c38">腾讯视频</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-iqiyi" value="//so.iqiyi.com/so/q_"
+                  data-placeholder="爱奇艺" />
+                <label for="type-iqiyi">
+                  <span style="color:#00cc4c">爱奇艺</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-youku" value="//so.youku.com/search_video/q_"
+                  data-placeholder="优酷" />
+                <label for="type-youku">
+                  <span style="color:#ff008c">优酷</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-viu" value="//www.viu.com/ott/hk/zh/search?keyword="
+                  data-placeholder="Viu" />
+                <label for="type-viu">
+                  <span style="color:#FFBF00">Viu</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-spotify" value="//open.spotify.com/search/"
+                  data-placeholder="Spotify" />
+                <label for="type-spotify">
+                  <span style="color:#1DB954">Spotify</span>
+                </label>
+              </li>
+              <li>
+                <input hidden type="radio" name="type" id="type-163music" value="//music.163.com/#/search/m/?s="
+                  data-placeholder="搜索歌曲" />
+                <label for="type-163music">
+                  <span style="color:#ff0000">网易云音乐</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <form action="//www.233so.com/search/" method="get" target="_blank" id="super-search-fm">
+          <input aria-label="search text" type="text" id="search-text" placeholder="输入关键字搜索" style="outline:0" autocomplete="off" />
+          <button aria-label="search button" type="submit">
+            <i class="fa fa-search "></i>
+          </button>
+        </form>
+        <div class="set-check hidden-xs">
+          <input aria-label="autocomplete" placeholder="" type="checkbox" id="set-search-blank" class="bubble-3" autocomplete="off" />
+        </div>
+      </div>
+      <!--END 搜索框 -->
+      
+      <!-- 威胁情报 -->
+      <h4 class="text-gray">
+        <i class="linecons-tag" style="margin-right: 7px;" id="威胁情报"></i>威胁情报
+      </h4>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('//x.threatbook.com', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://x.threatbook.com">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="微步" data-src="/assets/images/logos/wb.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>微步在线X情报社区</strong>
+                </a>
+                <p class="overflowClip_2">威胁情报查询和分析平台，提供恶意文件、IP、域名等威胁情报信息</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://ti.qianxin.com/v2/search?type=ip&value=', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://ti.qianxin.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="奇安信" data-src="/assets/images/logos/qax.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>奇安信威胁情报</strong>
+                </a>
+                <p class="overflowClip_2">奇安信威胁情报中心，提供最新的网络安全威胁情报和分析报告</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://ti.360.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://ti.360.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="360" data-src="/assets/images/logos/3602.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>360政企安全集团</strong>
+                </a>
+                <p class="overflowClip_2">360政企安全集团威胁情报平台，提供全面的网络安全威胁情报服务</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://ti.nsfocus.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://ti.nsfocus.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="nsfocus" data-src="/assets/images/logos/lm.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>绿盟科技</strong>
+                </a>
+                <p class="overflowClip_2">绿盟科技威胁情报中心，提供专业的网络威胁情报分析和预警服务</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://tix.qq.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://tix.qq.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="tencent" data-src="/assets/images/logos/tx1.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>腾讯安全</strong>
+                </a>
+                <p class="overflowClip_2">
+                  腾讯安全威胁情报中心，提供威胁情报查询和分析服务
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://ti.dbappsecurity.com.cn/', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://ti.dbappsecurity.com.cn/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="dbapp" data-src="/assets/images/logos/dbapp.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>安恒星图平台</strong>
+                </a>
+                <p class="overflowClip_2">安恒信息，专注于网络信息安全领域，提供全面的安全产品、服务和解决方案</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://redqueen.tj-un.com/home/index', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://redqueen.tj-un.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="RedQueen" data-src="/assets/images/logos/tj.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>RedQueen威胁情报中心</strong>
+                </a>
+                <p class="overflowClip_2">天际友盟TI Inside 生态协同模式是专业威胁情报厂商与专业安全产品厂商合作的最佳实践</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://exchange.xforce.ibmcloud.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://exchange.xforce.ibmcloud.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="IBM X-Force" data-src="/assets/images/logos/ibm.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>IBM X-Force Exchange</strong>
+                </a>
+                <p class="overflowClip_2">IBM威胁情报共享平台，提供全球威胁情报数据和分析</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.virustotal.com/gui/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.virustotal.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="virustotal" data-src="/assets/images/logos/vt.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Virustotal</strong>
+                </a>
+                <p class="overflowClip_2">在线恶意软件扫描服务，支持文件、URL、IP地址和域名检测</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://habo.qq.com/', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://habo.qq.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="habo" data-src="/assets/images/logos/tx1.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>哈勃分析系统</strong>
+                </a>
+                <p class="overflowClip_2">腾讯安全提供的恶意软件分析平台，支持勒索病毒检测和分析</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://sandbox.freebuf.com/detect', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://sandbox.freebuf.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="什么值得买" data-src="/assets/images/logos/free.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>大圣云沙箱检测系统</strong>
+                </a>
+                <p class="overflowClip_2">FreeBuf云沙箱检测系统，提供恶意软件分析服务</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.hybrid-analysis.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.hybrid-analysis.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="hybrid-analysis" data-src="/assets/images/logos/hybrid.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Hybrid Analysis</strong>
+                </a>
+                <p class="overflowClip_2">免费的恶意软件分析服务，提供详细的分析报告</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- END 威胁情报 -->
+
+      <!-- 资产测绘 -->
+      <h4 class="text-gray">
+        <i class="linecons-tag" style="margin-right: 7px;" id="资产测绘"></i>资产测绘
+      </h4>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://fofa.info/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://fofa.info/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="fofa" data-src="/assets/images/logos/ff.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>FOFA网络空间测绘</strong>
+                </a>
+                <p class="overflowClip_2">网络空间安全搜索引擎，快速查找全球互联网资产</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://hunter.qianxin.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://hunter.qianxin.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="hunter" data-src="/assets/images/logos/qax.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Hunter鹰图</strong>
+                </a>
+                <p class="overflowClip_2">网络资产测绘平台，提供资产识别、漏洞发现、风险评估等服务</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://quake.360.net/quake/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://quake.360.net/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="360" data-src="/assets/images/logos/3603.png"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>360安全大脑网络空间测绘</strong>
+                </a>
+                <p class="overflowClip_2">360网络空间测绘 — 因为看见，所以安全</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://x.threatbook.com/v5/mapping', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://x.threatbook.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="wb" data-src="/assets/images/logos/wb.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>微步X情报社区</strong>
+                </a>
+                <p class="overflowClip_2">微步在线威胁情报平台，提供IP、域名、文件等威胁情报查询</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.zoomeye.org/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.zoomeye.org/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="zoomeye" data-src="/assets/images/logos/zk.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>知道创宇网络空间雷达</strong>
+                </a>
+                <p class="overflowClip_2">
+                  网络空间测绘平台，提供资产发现、漏洞扫描、风险监测等服务
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://0.zone/', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://0.zone/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="0zone" data-src="/assets/images/logos/00.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>0zone攻击面管理系统</strong>
+                </a>
+                <p class="overflowClip_2">零零信安攻击面管理系统，提供全面的网络资产发现和管理</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.shodan.io/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.shodan.io/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="RedQueen" data-src="/assets/images/logos/sd.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Shodan Search Engine</strong>
+                </a>
+                <p class="overflowClip_2">全球首个互联网连接设备的搜索引擎，可以查找各种联网设备</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://search.censys.io/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://search.censys.io/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="IBM X-Force" data-src="/assets/images/logos/sys.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Censys Search</strong>
+                </a>
+                <p class="overflowClip_2">网络空间搜索引擎，提供设备指纹和组件指纹搜索</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- END 资产测绘 -->
+
+      <!-- 信息收集 -->
+      <h4 class="text-gray">
+        <i class="linecons-tag" style="margin-right: 7px;" id="信息收集"></i>信息收集
+      </h4>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.tianyancha.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.tianyancha.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="tianyancha" data-src="/assets/images/logos/tcha.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>查公司,查老板,查关系...</strong>
+                </a>
+                <p class="overflowClip_2">企业信息查询平台，提供公司工商信息、股权结构等数据</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://ping.chinaz.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://ping.chinaz.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="chinaz" data-src="/assets/images/logos/zzz.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>超级Ping</strong>
+                </a>
+                <p class="overflowClip_2">网络连通性测试工具，支持全球多节点Ping测试</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://site.ip138.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://site.ip138.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="ip138" data-src="/assets/images/logos/ip138.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>iP反查网站 同一iP网站</strong>
+                </a>
+                <p class="overflowClip_2">IP地址查询工具，支持IP反查域名和同IP网站查询</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.ipuu.net/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.ipuu.net/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="nsfocus" data-src="/assets/images/logos/aw.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>IP定位查询</strong>
+                </a>
+                <p class="overflowClip_2">IP地理位置查询工具，提供精确的IP定位信息</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://web-check.xyz/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://web-check.xyz/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="tencent" data-src="/assets/images/logos/web.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>网址综合信息查询</strong>
+                </a>
+                <p class="overflowClip_2">
+                  网站综合信息查询工具，提供域名、SSL、DNS等详细信息
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://grep.app/', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://grep.app/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="grep" data-src="/assets/images/logos/grep.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>全网代码搜索</strong>
+                </a>
+                <p class="overflowClip_2">全球最大的代码托管平台，发现开源项目和代码</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://centralops.net/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://centralops.net/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="centralops" data-src="/assets/images/logos/whois.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Free online network tools</strong>
+                </a>
+                <p class="overflowClip_2">域名Whois信息查询，了解域名注册信息</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://dnsdumpster.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://dnsdumpster.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="dnsdumpster" data-src="/assets/images/logos/dns2.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>DNS解析查询</strong>
+                </a>
+                <p class="overflowClip_2">DNS信息查询，了解域名解析情况</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.mogua.co/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.mogua.co/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="mogua" data-src="/assets/images/logos/mogua.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>APK反编译,APK反编译工具</strong>
+                </a>
+                <p class="overflowClip_2">Android APK反编译工具，支持在线APK分析</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://sec.lintstar.top/', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://sec.lintstar.top/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="lintstar" data-src="/assets/images/logos/lxg.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>凌星阁红队作战平台</strong>
+                </a>
+                <p class="overflowClip_2">红队作战平台，提供渗透测试工具和资源</p>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      <br />
+      <!-- END 信息收集 -->
+
+      <!-- 漏洞平台 -->
+      <h4 class="text-gray">
+        <i class="linecons-tag" style="margin-right: 7px;" id="漏洞平台"></i>漏洞平台
+      </h4>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.cnnvd.org.cn/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.cnnvd.org.cn/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="cnnvd" data-src="/assets/images/logos/cnnvd.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>国家信息安全漏洞库</strong>
+                </a>
+                <p class="overflowClip_2">国家信息安全漏洞共享平台，提供漏洞信息收集、分析和发布</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://cve.mitre.org/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://cve.mitre.org/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="cve" data-src="/assets/images/logos/cve.svg"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>CVE漏洞库</strong>
+                </a>
+                <p class="overflowClip_2">通用漏洞披露数据库，全球标准的漏洞编号系统</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.exploit-db.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.exploit-db.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="Exploit Database" data-src="/assets/images/logos/exp.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Exploit Database</strong>
+                </a>
+                <p class="overflowClip_2">漏洞利用数据库，提供各种漏洞的利用代码和信息</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://cn.0day.today/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://cn.0day.today/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="0day" data-src="/assets/images/logos/0day.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>漏洞利用市场</strong>
+                </a>
+                <p class="overflowClip_2">0day漏洞利用代码分享平台</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://avd.aliyun.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://avd.aliyun.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="aliyun" data-src="/assets/images/logos/aliyun.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>阿里云漏洞库</strong>
+                </a>
+                <p class="overflowClip_2">
+                 阿里云安全先知社区，安全技术分享与交流平台
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://www.nsfocus.net/index.php?act=sec_bug', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://www.nsfocus.net/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="nsfocus" data-src="/assets/images/logos/lm.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>NSFOCUS绿盟科技</strong>
+                </a>
+                <p class="overflowClip_2">绿盟科技安全漏洞库，提供专业的漏洞信息和安全公告</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- END 漏洞平台 -->
+ 
+       <!-- 黑客社区 -->
+      <h4 class="text-gray">
+        <i class="linecons-tag" style="margin-right: 7px;" id="黑客社区"></i>黑客社区
+      </h4>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://vx-underground.org/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://vx-underground.org/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="vx" data-src="/assets/images/logos/vx.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>安全代码存储库</strong>
+                </a>
+                <p class="overflowClip_2">专业的逆向工程和软件安全技术学习平台</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('http://xxxxxxxxxs6qbnahsbvxbghsnqh4rj6whbyblqtnmetf7vell2fmxmad.onion/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="http://xxxxxxxxxs6qbnahsbvxbghsnqh4rj6whbyblqtnmetf7vell2fmxmad.onion/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="cve" data-src="/assets/images/logos/cve.svg"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>暗网中文论坛</strong>
+                </a>
+                <p class="overflowClip_2">网络安全在线教育平台，提供安全技能培训和实战演练</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://unknownw.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://unknownw.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="Exploit Database" data-src="/assets/images/logos/un.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>unknownw社区</strong>
+                </a>
+                <p class="overflowClip_2">国内知名的网络安全行业门户，提供安全资讯、技术文章和工具</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://breachforums.hn/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://breachforums.hn/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="breachforums" data-src="/assets/images/logos/bf.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>breachforums</strong>
+                </a>
+                <p class="overflowClip_2">低调求发展的安全技术社区，专注于安全技术交流</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://forum.butian.net/community', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://forum.butian.net/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="aliyun" data-src="/assets/images/logos/qax2.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>奇安信攻防社区</strong>
+                </a>
+                <p class="overflowClip_2">
+                 奇安信攻防社区，安全技术分享和交流平台
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://bbs.dbappsecurity.com.cn/knowledge', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://bbs.dbappsecurity.com.cn/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="nsfocus" data-src="/assets/images/logos/ah.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>安恒社区</strong>
+                </a>
+                <p class="overflowClip_2">知识库-安恒信息技术支持中心</p>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://xz.aliyun.com/', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://xz.aliyun.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="xianzhi" data-src="/assets/images/logos/xz.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>先知社区</strong>
+                </a>
+                <p class="overflowClip_2">阿里云安全先知社区，安全技术分享与交流平台</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- END 漏洞平台 -->
+      
+           <!-- 勒索应急 -->
+      <h4 class="text-gray">
+        <i class="linecons-tag" style="margin-right: 7px;" id="勒索应急"></i>勒索应急
+      </h4>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.nomoreransom.org/zh/decryption-tools.html', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.nomoreransom.org/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="nomoreransom" data-src="/assets/images/logos/nomore.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>勒索解密查询</strong>
+                </a>
+                <p class="overflowClip_2">国际反勒索病毒项目，提供免费解密工具和预防建议</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://id-ransomware.malwarehunterteam.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://id-ransomware.malwarehunterteam.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="id-ransomware" data-src="/assets/images/logos/id.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>ID Ransomware</strong>
+                </a>
+                <p class="overflowClip_2">勒索病毒识别工具，帮助用户识别感染的勒索病毒类型</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://noransom.kaspersky.com/zh/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://noransom.kaspersky.com/zh/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="kaspersky" data-src="/assets/images/logos/kp.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>免费勒索软件解密器</strong>
+                </a>
+                <p class="overflowClip_2">卡巴斯基提供的免费勒索病毒解密工具集合</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.avast.com/zh-cn/ransomware-decryption-tools#pc', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.avast.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="wb" data-src="/assets/images/logos/avast.svg"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>免费勒索软件解密工具</strong>
+                </a>
+                <p class="overflowClip_2">Avast提供的免费勒索病毒解密工具</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://lesuobingdu.360.cn/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://lesuobingdu.360.cn/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="360" data-src="/assets/images/logos/3601.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>360勒索病毒解密</strong>
+                </a>
+                <p class="overflowClip_2">
+                  360提供的勒索病毒搜索和解密工具，帮助用户识别和解决勒索病毒问题
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://lesuobingdu.qianxin.com/', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://lesuobingdu.qianxin.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="qax" data-src="/assets/images/logos/qax3.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>勒索病毒搜索引擎</strong>
+                </a>
+                <p class="overflowClip_2">奇安信勒索病毒搜索引擎，提供勒索病毒识别和解密服务</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://lesuo.venuseye.com.cn/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://lesuo.venuseye.com.cn/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="RedQueen" data-src="/assets/images/logos/qm.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>VenusEye勒索病毒搜索引擎</strong>
+                </a>
+                <p class="overflowClip_2">启明星辰VenusEye勒索病毒搜索引擎</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://guanjia.qq.com/pr/ls/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://guanjia.qq.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="tx2" data-src="/assets/images/logos/tx2.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>腾讯勒索病毒搜索引擎</strong>
+                </a>
+                <p class="overflowClip_2">腾讯电脑管家勒索病毒搜索引擎</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- END 勒索应急 -->
+    
+               <!-- AI大模型 -->
+      <h4 class="text-gray">
+        <i class="linecons-tag" style="margin-right: 7px;" id="AI大模型"></i>AI大模型
+      </h4>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://chat.openai.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://chat.openai.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="openai" data-src="/assets/images/logos/openai.svg"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Chatgpt</strong>
+                </a>
+                <p class="overflowClip_2">OpenAI开发的大型语言模型，提供智能对话和文本生成服务</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.tongyi.com/qianwen/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.tongyi.com/qianwen/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="tyqw" data-src="/assets/images/logos/tyqw.png"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>通义千问</strong>
+                </a>
+                <p class="overflowClip_2">阿里云推出的大语言模型，提供智能问答和内容生成服务</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://gemini.google.com/app', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://gemini.google.com/app">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="kaspersky" data-src="/assets/images/logos/gmini.svg"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Gemini</strong>
+                </a>
+                <p class="overflowClip_2">Google开发的多模态AI助手，具备强大的理解和生成能力</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.doubao.com/chat/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.doubao.com/chat/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="doubao" data-src="/assets/images/logos/db.png"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>豆包</strong>
+                </a>
+                <p class="overflowClip_2">字节跳动推出的AI助手，提供智能对话和内容创作服务</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://grok.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://grok.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="x" data-src="/assets/images/logos/x.png"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Grok</strong>
+                </a>
+                <p class="overflowClip_2">
+                 X(Twitter)开发的AI助手，具备实时信息获取能力
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('https://copilot.microsoft.com/', '_blank')" data-toggle="tooltip" data-placement="bottom"
+            title="" data-original-title="https://copilot.microsoft.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="copilot" data-src="/assets/images/logos/copilot.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Copilot</strong>
+                </a>
+                <p class="overflowClip_2">微软必应AI助手，集成搜索和对话功能</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://manus.im/login?type=signIn', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://manus.im/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="manus" data-src="/assets/images/logos/manus.ico"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Manus</strong>
+                </a>
+                <p class="overflowClip_2">Manus是一款通用型 AI 助手，能将想法转化为行动：不止于思考，更注重成果。Manus 擅长处理工作与生活中的各类任务，在你安心休息的同时，一切都能妥善完成</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://www.remove.bg/zh', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://www.remove.bg/zh">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="tx2" data-src="/assets/images/logos/remove.png"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>在线抠图软件</strong>
+                </a>
+                <p class="overflowClip_2">remove.bg在线抠图软件轻松实现一键抠图，只需上传图片，无需其他操作，即可100%自动去除图片背景</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+           <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://agent.minimaxi.com/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://agent.minimaxi.com/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="minimaxi" data-src="/assets/images/logos/minimax.png"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>MiniMax</strong>
+                </a>
+                <p class="overflowClip_2">MiniMax 是国内领先的拥有文本、声音、视觉三模态融合的千亿参数语言大模型</p>
+              </div>
+            </div>
+          </div>
+        </div>
+           <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://app.napkin.ai', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://app.napkin.ai">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="tx2" data-src="/assets/images/logos/napkin.png"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>Napkin</strong>
+                </a>
+                <p class="overflowClip_2">Napkin是一款AI驱动的可视化工具,可以帮助用户将文本内容转化为丰富的视觉效果</p>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://same.new/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://same.new/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img aria-label="same" data-src="/assets/images/logos/same.svg"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>same.new</strong>
+                </a>
+                <p class="overflowClip_2">same.new是一款专注于快速克隆网页 UI 的工具,支持一键生成高精度前端代码框架,并实现自动化部署</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <br />
+      <!-- END AI大模型 -->
+      
+      <!-- 本站导航 -->
+      <h4 class="text-gray">
+        <i class="linecons-cloud" style="margin-right: 7px;" id="本站导航"></i>本站导航
+      </h4>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://redteam.eu.cc/passwd/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://redteam.eu.cc/passwd/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img data-src="./"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>默认密码查询</strong>
+                </a>
+                <p class="overflowClip_2">默认密码查询</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('https://redteam.eu.cc/hacking/', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://redteam.eu.cc/hacking/">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img data-src="./"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
+                data-original-title="Hello I am a Tooltip"></span>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>hacking terminal</strong>
+                </a>
+                <p class="overflowClip_2">hacking terminal</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info"
+            onclick="window.open('#_#', '_blank')" data-toggle="tooltip"
+            data-placement="bottom" title="" data-original-title="#_#">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img data-src="./"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>广告位招商</strong>
+                </a>
+                <p class="overflowClip_2">广告位招商</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('#_#', '_blank')"
+            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="#_#">
+            <div class="xe-comment-entry">
+              <a class="xe-user-img">
+                <img data-src="./"
+                  class="lozad img-circle" width="40" />
+              </a>
+              <div class="xe-comment">
+                <a href="#" class="xe-user-name overflowClip_1">
+                  <strong>广告位招商</strong>
+                </a>
+                <p class="overflowClip_2">广告位招商</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <!--END 本站导航 -->
+      <!-- Main Footer -->
+      <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+      <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+      <!-- Or class "fixed" to  always fix the footer to the end of page -->
+      <footer class="main-footer sticky footer-type-1">
+        <div class="footer-inner">
+          <!-- Add your copyright text here -->
+          <div class="footer-text">
+            <span id="siteLifeTime"></span>
+            <p></p>
+            <span id="copyright"></span>
+            <a href="#"><strong>Cncert</strong></a> Based on
+            <strong>WebStackPage</strong>
+          </div>
+          <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality 
+                    <div class="go-up">
+                        <a href="#" rel="go-top">
+                            <i class="fa-angle-up"></i>
+                        </a>
+                    </div>-->
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- 锚点平滑移动 -->
+  <script type="text/javascript">
+    $(document).ready(function () {
+      //img lazy loaded
+      const observer = lozad();
+      observer.observe();
+
+      $(document).on('click', '.has-sub', function () {
+        var _this = $(this);
+        if (!$(this).hasClass('expanded')) {
+          setTimeout(function () {
+            _this.find('ul').attr('style', '');
+          }, 300);
+        } else {
+          $('.has-sub ul').each(function (id, ele) {
+            var _that = $(this);
+            if (_this.find('ul')[0] != ele) {
+              setTimeout(function () {
+                _that.attr('style', '');
+              }, 300);
+            }
+          });
+        }
+      });
+      $('.user-info-menu .hidden-sm').click(function () {
+        if ($('.sidebar-menu').hasClass('collapsed')) {
+          $('.has-sub.expanded > ul').attr('style', '');
+        } else {
+          $('.has-sub.expanded > ul').show();
+        }
+      });
+      $('#main-menu li ul li').click(function () {
+        $(this)
+          .siblings('li')
+          .removeClass('active'); // 删除其他兄弟元素的样式
+        $(this).addClass('active'); // 添加当前元素的样式
+      });
+      $('a.smooth').click(function (ev) {
+        ev.preventDefault();
+
+        public_vars.$mainMenu
+          .add(public_vars.$sidebarProfile)
+          .toggleClass('mobile-is-visible');
+        ps_destroy();
+        $('html, body').animate(
+          {
+            scrollTop: $($(this).attr('href')).offset().top - 30
+          },
+          {
+            duration: 500,
+            easing: 'swing'
+          }
+        );
+      });
+      return false;
+    });
+
+    var href = '';
+    var pos = 0;
+    $('a.smooth').click(function (e) {
+      $('#main-menu li').each(function () {
+        $(this).removeClass('active');
+      });
+      $(this)
+        .parent('li')
+        .addClass('active');
+      e.preventDefault();
+      href = $(this).attr('href');
+      pos = $(href).position().top - 30;
+    });
+  </script>
+  <!-- Bottom Scripts -->
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/TweenMax.min.js"></script>
+  <script src="/assets/js/resizeable.min.js"></script>
+  <script src="/assets/js/joinable.js"></script>
+  <script src="/assets/js/xenon-api.min.js"></script>
+  <script src="/assets/js/xenon-toggles.min.js"></script>
+  <!-- JavaScripts initializations and stuff -->
+  <script src="/assets/js/xenon-custom.min.js"></script>
+  <script src="/assets/js/lozad.min.js"></script>
+  <script src="/assets/js/233.min.js"></script>
+  <!--仿凡科 右侧悬浮窗 by:zmki   zmki.cn 2020年2月9日17:03:13-->
+  <div class="wapnone fk_service">
+    <ul>
+      <li class="fk_service_box fk_service_zmkiah" onclick="window.location.href='javascript:switchNightMode()'">
+        <div class="fk_service_zmkiah_cont">
+          <span class="fk_service_triangle"></span>全新暗黑模式，夜间使用保护眼睛
+        </div>
+      </li>
+      <!-- <li>
+          <div class="fk_service_consult_cont1" style="display: none;">
+            <span class="fk_service_triangle"></span> 在线咨询
+          </div>
+        </li> -->
+      <li class="fk_service_box fk_service_consult">
+        <div class="fk_service_consult_cont">
+          <span class="fk_service_triangle"></span>
+          <div class="fk_service_consult_cont_top">
+            <span class="fk_service_hint">
+              <span class="fk_service_icon"></span>
+              <span> 如遇问题，请联系站长 </span>
+            </span>
+            <span class="fk_service_button"
+              onclick="window.open('//mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=cncert.db@gmail.com')">在线邮件</span>
+          </div>
+          
+        </div>
+      </li>
+
+      <li class="fk_service_box fk_service_upward" onclick="fk_upWard();" style="display: block;">
+        <div class="fk_service_upward_cont">
+          <span class="fk_service_triangle"></span> <span> 返回顶部 </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
