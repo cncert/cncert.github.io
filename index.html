@@ -128,27 +128,7 @@
           </li>
         </ul>
         <div id="top_info" style="padding: 25px 20px;font-size: 15px;color: #979898;">
-          <!-- 显示当前时间开始 -->
-          <span id="c_time">
-            <script type="text/javascript">
-              function c_time() {
-                var c_date = new Date();
-                document.getElementById('c_time').innerHTML =
-                  c_date.getFullYear() +
-                  '年' +
-                  (c_date.getMonth() + 1) +
-                  '月' +
-                  c_date.getDate() +
-                  '日' +
-                  ' 星期' +
-                  '日一二三四五六'.charAt(c_date.getDay()) +
-                  ' ' +
-                  c_date.toTimeString().split(' ')[0];
-              }
-              setInterval(c_time, 250);
-            </script>
-          </span>
-          <!-- END 显示当前时间结束 -->
+       
           <!-- 显示倒计时开始 -->
           <span id="f1china">
             <script>
@@ -158,7 +138,7 @@
                 if (currentDate < new Date(targetDate.getTime() + 24 * 60 * 60 * 1000)) {
                   const timeDifference = targetDate - currentDate;
                   const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-                  document.getElementById("f1china").textContent = `🎇距离2026年春节还有${daysRemaining}天🎇`;                  
+                  document.getElementById("f1china").textContent = `🎇距离2026年春节还有${daysRemaining}天`;                  
                 }
               }
               setInterval(updateCountdown, 1000);
@@ -166,9 +146,7 @@
           </span>
           <!-- END 显示倒计时结束 -->
           <!-- 显示当前IP开始 -->
-          <span id="c_ip">
-            <script type="text/javascript" src="https://haoip.cn/ipjs"></script>
-          </span>
+
           <!-- END 显示当前IP结束 -->
           <!-- 夜间模式开始 -->
           <span id="swicthNightMode"><a id="icon-switch" onclick="switchNightMode()" target="_self"
@@ -1781,7 +1759,7 @@
             data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://cncert.github.io/passwd/">
             <div class="xe-comment-entry">
               <a class="xe-user-img">
-                <img data-src="./"
+                <img data-src="/assets/images/logos/hacked.png"
                   class="lozad img-circle" width="40" />
               </a>
               <div class="xe-comment">
@@ -1798,7 +1776,7 @@
             data-toggle="tooltip" data-placement="bottom" title="" data-original-title="https://cncert.github.io/hacking/">
             <div class="xe-comment-entry">
               <a class="xe-user-img">
-                <img data-src="./"
+                <img data-src="/assets/images/logos/hacked.png"
                   class="lozad img-circle" width="40" />
               </a>
               <span class="label label-info" data-toggle="tooltip" data-placement="left" title=""
@@ -1818,7 +1796,7 @@
             data-placement="bottom" title="" data-original-title="#_#">
             <div class="xe-comment-entry">
               <a class="xe-user-img">
-                <img data-src="./"
+                <img data-src="/assets/images/logos/hacked.png"
                   class="lozad img-circle" width="40" />
               </a>
               <div class="xe-comment">
@@ -1835,7 +1813,7 @@
             data-toggle="tooltip" data-placement="bottom" title="" data-original-title="#_#">
             <div class="xe-comment-entry">
               <a class="xe-user-img">
-                <img data-src="./"
+                <img data-src="/assets/images/logos/hacked.png"
                   class="lozad img-circle" width="40" />
               </a>
               <div class="xe-comment">
@@ -1956,7 +1934,7 @@
   <!-- JavaScripts initializations and stuff -->
   <script src="/assets/js/xenon-custom.min.js"></script>
   <script src="/assets/js/lozad.min.js"></script>
-  <script src="/assets/js/233.min.js"></script>
+  <script src="/assets/js/cncert.min.js"></script>
   <!--仿凡科 右侧悬浮窗 by:zmki   zmki.cn 2020年2月9日17:03:13-->
   <div class="wapnone fk_service">
     <ul>
