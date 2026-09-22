@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<meta http-equiv="refresh" content="5; url=http://www.github.com/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - This page could not be found</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #fafafa;
+      --fg: #111;
+      --muted: #888;
+      --border: #e5e5e5;
+      --border-strong: #111;
+      --accent: #0070f3;
+      --grid: rgba(0, 0, 0, 0.04);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Decorative grid background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    }
+
+    /* Floating decorative shapes */
+    .deco {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .deco-1 {
+      width: 320px;
+      height: 320px;
+      top: -120px;
+      right: -80px;
+      background: radial-gradient(circle at 30% 30%, #ff7a59, transparent 60%);
+      filter: blur(40px);
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .deco-2 {
+      width: 280px;
+      height: 280px;
+      bottom: -100px;
+      left: -60px;
+      background: radial-gradient(circle at 70% 70%, #0070f3, transparent 60%);
+      filter: blur(50px);
+      animation: float 14s ease-in-out infinite reverse;
+    }
+
+    .deco-3 {
+      width: 200px;
+      height: 200px;
+      top: 40%;
+      right: 8%;
+      background: radial-gradient(circle at 50% 50%, #8b5cf6, transparent 60%);
+      filter: blur(60px);
+      animation: float 16s ease-in-out infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%      { transform: translate(30px, -20px) scale(1.05); }
+      66%      { transform: translate(-20px, 30px) scale(0.95); }
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .error-container {
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 24px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ff7a59;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .error-code {
+      font-size: clamp(112px, 20vw, 192px);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin: 0;
+      color: var(--fg);
+      position: relative;
+      display: inline-block;
+    }
+
+    .error-code::after {
+      content: "404";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        transparent 45%,
+        rgba(0, 0, 0, 0.7) 50%,
+        transparent 55%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3.5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .error-message {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--muted);
+      margin: 16px 0 32px;
+      letter-spacing: 0.01em;
+    }
+
+    .actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 20px;
+      background: var(--fg);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.2s ease,
+                  background-color 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .home-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .home-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      background-color: #000;
+    }
+
+    .home-link:hover::before {
+      transform: translateX(100%);
+    }
+
+    .home-link svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.25s ease;
+    }
+
+    .home-link:hover svg {
+      transform: translateX(-3px);
+    }
+
+    .ghost-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color 0.2s ease, background-color 0.2s ease,
+                  transform 0.2s ease;
+      background: #fff;
+    }
+
+    .ghost-link:hover {
+      border-color: var(--border-strong);
+      background: #fff;
+      transform: translateY(-2px);
+    }
+
+    .ghost-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .hint {
+      margin-top: 36px;
+      font-size: 13px;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .hint code {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--fg);
+      font-size: 12px;
+    }
+
+    footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s ease;
+    }
+
+    footer a:hover {
+      border-color: var(--border-strong);
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .home-link, .ghost-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deco deco-1" aria-hidden="true"></div>
+  <div class="deco deco-2" aria-hidden="true"></div>
+  <div class="deco deco-3" aria-hidden="true"></div>
+
+  <main>
+    <div class="error-container">
+      <div class="badge">Edge function · 404</div>
+      <h1 class="error-code">404</h1>
+      <p class="error-message">This page could not be found.</p>
+
+      <div class="actions">
+        <a href="/" class="home-link">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m12 19-7-7 7-7" />
+            <path d="M19 12H5" />
+          </svg>
+          Go back home
+        </a>
+        <a href="javascript:history.back()" class="ghost-link">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+            <path d="M21 3v5h-5" />
+          </svg>
+          Reload
+        </a>
+      </div>
+
+      <p class="hint">
+        Need help? Try <code>npm run dev</code> or check the route.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    Hosted on
+    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+      GitHub
+    </a>
+  </footer>
+</body>
+</html>
